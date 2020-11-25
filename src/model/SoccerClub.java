@@ -38,6 +38,25 @@ public class SoccerClub {
        
     }
 
+    // -------------------- Menu Operations -------------------------
+
+    public String addTeam(String teamName) {
+        String message = "No añadido";
+        boolean add = false;
+
+        ClubTeam newteam = new ClubTeam(teamName);
+
+        for(int i = 0; i < TEAMS_SIZE ; i++){
+            if( !add && teams[i] != null ){
+                teams[i] = newteam;
+                add = true;
+                message = "Añadido"; 
+            }
+        }
+
+        return message;
+    }
+
     // -------------------- Auxiliar Operations -------------------------
 
     // -------------------- getters / settes -------------------------

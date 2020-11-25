@@ -17,13 +17,12 @@ public class LineUp {
      * Cosntructor LineUp Object <br>
      * <b>pre:</b> Create a LineUp object. <br>
      * <b>post:</b> LineUp created
-     * @param type The lineup type. type !=null
      * @param lineUpDate Creation date. lineUpDate !=null
      * @param lineUpNum The secuence of numbers. lineUpNum !=null
      * @param typeNum The enum position. typeNum !=null
      */
-    public LineUp(String type, String lineUpDate, String lineUpNum, int typeNum) {
-        this.type = type;
+    public LineUp(String lineUpDate, String lineUpNum, int typeNum) {
+        
         this.lineUpDate = lineUpDate;
         this.lineUpNum = lineUpNum;
         this.typeNum = typeNum;
@@ -44,6 +43,19 @@ public class LineUp {
 
 
         return matrix;
+    }
+
+    public String showInfo(){
+        String message = "";
+
+        message = "********** Formación **********" + "\n";
+        message += "** Tipo: " + getType()  + "\n";
+        message += "** Fecha: " + getLineUpDate()  + "\n";
+        message += "** Formación: " + getLineUpNum() + "\n";
+        message += "** Imagen: " + "shirtNumber"  + "\n";   /// Imagen creada matriz
+        message += "*****************************" + "\n";
+
+        return message;
     }
 
     // -------------------- getters / settes -------------------------
