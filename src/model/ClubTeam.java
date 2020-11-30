@@ -22,9 +22,21 @@ public class ClubTeam {
 
     // -------------------- Auxiliar Operations -------------------------
 
+    public String showTeamInfo (){
+        String message = "******** Información Equipo ********" + "\n";
+
+
+        message += "** Nombre del equipo: " + getTeamName() + "\n";
+        message += "** Número de liniaciones: " + lineUps.size() + "\n";
+
+
+        return message;
+    }
+
     // -------------------- getters / settes -------------------------
 
-    /**
+
+	/**
      * Get teamName <br>
      * <b>pre:</b> Get teamName to pass as parameter. Team must be created. <br>
      * <b>post:</b> teamName

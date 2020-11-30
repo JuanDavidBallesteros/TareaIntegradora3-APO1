@@ -61,23 +61,203 @@ public class Menu {
      */
     public void showMenu() {
         System.out.println("");
-        System.out.println("(1) Para ingresar un nuevo empleado");
-        System.out.println("(2) Para eliminar un empeado");
-        System.out.println("(3) Para asignar un empleado a un equipo");
-        System.out.println("(4) Para quitar a un empleado a un equipo");
-        System.out.println("(5) Para mostrar la información de un empleado o equipo");
-        System.out.println("(6) Para editar la información de un empleado o equipo");
-        System.out.println("(7) Para añadir una alineación de equipo");
-        System.out.println("(8) Para mostrar la alineación de un equipo");
-        System.out.println("(9) Para añadir un jugador al camerino");
-        System.out.println("(10) Para añadir a un entrenador a las oficinas");
-        System.out.println("(11) Para mostrar la ubicación del jugador");
-        System.out.println("(12) Para mostrar la ubicación del entrenador");
-        System.out.println("(13) Para mostrar la información general del club");
-        System.out.println("(14) Para salir");
+        System.out.println("(1) Para ingresar un nuevo empleado ");
+        System.out.println("(2) Para eliminar un empleado ");
+        System.out.println("(3) Para asignar un empleado a un equipo ");
+        System.out.println("(4) Para quitar a un empleado a un equipo ");
+        System.out.println("(5) Para mostrar la información de un empleado o equipo ");
+        System.out.println("(6) Para editar la información de un empleado o equipo ");
+        System.out.println("(7) Para añadir una alineación de equipo ");
+        System.out.println("(8) Para mostrar la alineación de un equipo ");
+        System.out.println("(9) Para añadir un jugador al camerino ");
+        System.out.println("(10) Para añadir a un entrenador a las oficinas ");
+        System.out.println("(11) Para mostrar la ubicación del jugador ");
+        System.out.println("(12) Para mostrar la ubicación del entrenador ");
+        System.out.println("(13) Para mostrar la información general del club ");
+        System.out.println("(14) Para salir ");
 
         System.out.println("");
     }
+
+    ///-----------------------------------------------------
+
+
+    public String addEmployee (){
+
+        String message = "";
+
+        System.out.println("(1) Para ingresar un nuevo jugador ");
+        System.out.println("(2) Para ingresar un nuevo entrenador ");
+        System.out.println("(3) Para ingresar un nuevo asistente ");
+
+        int selection = Integer.parseInt(sc.nextLine());
+
+        //---------------- Player
+
+        if(selection == 1 ){
+
+            System.out.println("Nombre del jugador y apellido ");
+            String employeeName = (sc.nextLine());
+
+            System.out.println("Identificación del jugador ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Salario del jugador (entero) ");
+            int salary = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Número de la camisa ");
+            int shirtNumber = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Goles anotados ");
+            int scoredGoals = Integer.parseInt(sc.nextLine());
+
+            int averageMark = 0;
+            
+            do{ 
+                System.out.println("Calificación promedio 0 a 10 ");
+                averageMark = Integer.parseInt(sc.nextLine());
+            }while(averageMark > 10 || averageMark < 0);
+            
+            int roleNum = 0;
+
+            do{
+                System.out.println("Número del rol");
+                System.out.println(""); 
+
+                System.out.println("(1) Arquero ");
+                System.out.println("(2) Defensa ");
+                System.out.println("(3) Medio campista ");
+                System.out.println("(4) Delantero "); 
+                roleNum = Integer.parseInt(sc.nextLine());
+                          
+
+            }while(roleNum > 4 || roleNum < 1);
+
+            roleNum = roleNum - 1;
+
+
+            message = soccerClub.addEmployee(employeeName, id, salary, shirtNumber, scoredGoals, averageMark, roleNum);
+        }
+
+        //---------------- Head Coach
+
+        if(selection == 2 ){
+
+            System.out.println("Nombre del entrenador y apellido ");
+            String employeeName = (sc.nextLine());
+
+            System.out.println("Identificación del entrenador ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Salario del entrenador (entero) ");
+            int salary = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Número de años de experiencia  ");
+            int experienceYears = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Campeonatos ganados ");
+            int achivedChampionships = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Equipos acargo ");
+            int teamsInCharge = Integer.parseInt(sc.nextLine());
+
+
+            message = soccerClub.addEmployee (employeeName, id, salary, experienceYears, achivedChampionships, teamsInCharge);
+        }
+
+        //---------------- Assitan Coach
+
+        if(selection == 3 ){
+
+            System.out.println("Nombre del asistente y apellido ");
+            String employeeName = (sc.nextLine());
+
+            System.out.println("Identificación del asistente ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Salario del asistente (entero) ");
+            int salary = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Número de años de experiencia ");
+            int experienceYears = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Profesional del deporte (si - no) ");
+            String isProfessional = (sc.nextLine());
+
+            int expertiseNum = 0;
+
+            do{
+                System.out.println("Número la especialdiad ");
+                System.out.println("");
+
+                System.out.println("(1) Ofensiva ");
+                System.out.println("(2) Defensiva ");
+                System.out.println("(3) Pocesión ");
+                System.out.println("(4) Laboratorio ");
+
+                expertiseNum = Integer.parseInt(sc.nextLine());
+
+                }while(expertiseNum > 4 || expertiseNum < 1);
+    
+                expertiseNum = expertiseNum - 1;
+
+            message = soccerClub.addEmployee(employeeName, id, salary, experienceYears, isProfessional, expertiseNum);
+        }
+
+        //---------------- Error
+
+        if( selection < 1 || selection > 3){
+            message = "Numero no valido ";
+        }
+
+        return message;
+    }
+
+    public String fireEmployee(){
+
+        String message = "";
+
+        System.out.println("Ingresa el numero de identificación ");
+        int id = Integer.parseInt(sc.nextLine());
+
+        message = soccerClub.fireEmployeeInfo(id);
+
+        return message;
+    }
+
+
+    public String showPlayerTeamInfo (){
+
+        String message = "No encontrado ";
+
+        System.out.println("(1) Para ver la información de un empleado ");
+        System.out.println("(2) Para ver la información de equipo ");
+        int selection = Integer.parseInt(sc.nextLine());
+
+        if(selection == 1 ){
+            System.out.println("Ingresa el numero de identificación ");
+            int id = Integer.parseInt(sc.nextLine());
+            message = soccerClub.showEmployeeInfo(id);
+        }
+
+        if(selection == 2 ){
+            System.out.println("Elije la catedoria del equipo (A o B) ");
+            String letter = (sc.nextLine());
+            message =  soccerClub.showTeamInfo(letter);
+        }
+
+        if(selection < 1 || selection > 2){
+            message = "Numero no valido";
+        }
+
+        return message;
+    }
+
+
+
+
+    
+    ///-----------------------------------------------------
 
     /**
      * Read options <br>
@@ -100,11 +280,11 @@ public class Menu {
     public void doOperation(int choice) {
         switch (choice) {
             case ADD_EMPLOYEE:
-                System.out.println("Pendiente 1");
+                System.out.println(addEmployee());
                 break;
 
             case FIRE_EMPLOYEE:
-                System.out.println("Pendiente 2");
+                System.out.println(fireEmployee());
                 break;
 
             case ALLOCATE_EMPLOYEE_TEAM:
@@ -116,7 +296,7 @@ public class Menu {
                 break;
 
             case SHOW_PARTICULAR_INFO:
-                System.out.println("Pendiente 5");
+                System.out.println(showPlayerTeamInfo());
                 break;
 
             case EDIT_PARTICULAR_INFO:
@@ -148,7 +328,7 @@ public class Menu {
                 break;
 
             case SHOW_CLUB_INFO:
-                System.out.println("Pendiente 14");
+                System.out.println(soccerClub.showClubInfo());
                 break;
 
             case EXIT:

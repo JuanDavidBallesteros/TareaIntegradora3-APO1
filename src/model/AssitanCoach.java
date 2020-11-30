@@ -22,7 +22,7 @@ public class AssitanCoach extends Coach {
 
         String message = "";
         
-        message = "********** Jugador **********" + "\n";
+        message = "********** Asistente **********" + "\n";
         message += "** Nombre: " + getEmployeeName()  + "\n";
         message += "** ID: " + getId()  + "\n";
         message += "** Salario: " + getSalary() + "\n";

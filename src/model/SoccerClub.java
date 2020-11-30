@@ -1,14 +1,21 @@
+
 package model;
+
+
+
+import java.util.ArrayList;
 
 public class SoccerClub {
 
     private static final int TEAMS_SIZE = 2;
-
     private String clubName;
     private int nit;
     private String foundationDate;
     
-    private ClubTeam[] teams;
+    private ClubTeam[] clubTeams;
+    private ArrayList <Employee> employees;
+
+    private String exist = "Empleado existe";
 
     // -------------------- constructor -------------------------
     /**
@@ -24,21 +31,180 @@ public class SoccerClub {
         this.nit = nit;
         this.foundationDate = foundationDate;
 
-        teams = new ClubTeam[TEAMS_SIZE];
+        clubTeams = new ClubTeam[TEAMS_SIZE];
+
+        clubTeams[0] = new ClubTeam ("Team A");
+        clubTeams[1] = new ClubTeam ("Team B");
+
+        employees =  new ArrayList<>();
     }
 
-    //tess method
+    //test method
     public SoccerClub() {
         clubName = "Fosfotos";
         nit = 1234;
         foundationDate = "12/08/1967";
 
-        teams = new ClubTeam[TEAMS_SIZE];
+        clubTeams = new ClubTeam[TEAMS_SIZE];
+        clubTeams[0] = new ClubTeam ("Zucaritas");
+        clubTeams[1] = new ClubTeam ("Chocapics");
 
-       
+        employees =  new ArrayList<>();
     }
 
     // -------------------- Menu Operations -------------------------
+
+    //Player
+    public String addEmployee(String employeeName, int id, double salary, int shirtNumber, int scoredGoals, double averageMark, int roleNum){
+
+        String message = "No se pudo añadir el jugador";
+        boolean add = true;
+
+        Employee newEmployee = new Player(employeeName, id, salary, shirtNumber, scoredGoals, averageMark, roleNum);
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId()){
+                add = false;
+                message = exist;
+            }
+        }
+        if (add){
+            employees.add(newEmployee);
+            message = "Jugador añadido";
+        }
+        return message;
+    }
+
+    public String addEmployee(String employeeName, int id, double salary, int experienceYears, int achivedChampionships,
+    int teamsInCharge){
+
+        String message = "No se pudo añadir el entrenador";
+        boolean add = true;
+
+        Employee newEmployee = new HeadCoach(employeeName, id, salary, experienceYears, achivedChampionships, teamsInCharge);
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId()){
+                add = false;
+                message = exist;
+            }
+        }
+
+        if (add){
+            employees.add(newEmployee);
+            message = "Entrenador añadido";
+        }
+        return message;
+    }
+
+    public String addEmployee(String employeeName, int id, double salary, int experienceYears, String isProfessional, int expertiseNum){
+
+        String message = "No se pudo añadir el asistente";
+        boolean add = true;
+
+        Employee newEmployee = new AssitanCoach(employeeName, id, salary, experienceYears, isProfessional, expertiseNum);
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId()){
+                add = false;
+                message = exist;
+            }
+        }
+
+        if (add){
+            employees.add(newEmployee);
+            message = "Asistente añadido";
+        }
+        return message;
+    }
+    
+    public String fireEmployeeInfo(int id){
+
+        String message = "Empleado no encontrado";
+      
+            for(int i = 0 ; i < employees.size() ; i++ ){
+                if (  employees.get(i) != null   &&   employees.get(i).getId() == id ){
+                    message = "Eliminado";
+                    employees.remove(i);
+                }
+            }
+          
+        return message;
+    }
+
+    public String showClubInfo (){
+        String message = "*********** Información Club ***********" + "\n";
+
+        message += "** Club nombre" + getClubName() + "\n";
+        message += "** Club fecha de dundación" + getFoundationDate() + "\n";
+        message += "** Club NIT" + getNit() + "\n";
+
+
+        message += "----------- Club Teams" + "\n";
+        message +=  clubTeams[0].showTeamInfo() + "\n";
+        message +=  clubTeams[1].showTeamInfo() + "\n";
+
+        message += "----------- Club Employees: " + employees.size() + "\n";
+        message += employeesInfo();
+
+
+
+        return message;
+    }
+
+    private String employeesInfo (){
+        String message = "";
+
+        for(int i = 0 ; i < employees.size() ; i++ ){
+            if(employees.get(i) instanceof HeadCoach){
+                message  = message + employees.get(i).showInfo() + "\n";
+            }
+        }
+
+       for(int i = 0 ; i < employees.size() ; i++ ){
+            if(employees.get(i) instanceof AssitanCoach){
+                message  = message + employees.get(i).showInfo() + "\n";
+                }
+        }
+
+        for(int i = 0 ; i < employees.size() ; i++ ){
+            if(employees.get(i) instanceof Player){
+                message  = message + employees.get(i).showInfo() + "\n";
+            }
+        }
+
+       return message;
+    }
+
+    public String showTeamInfo (String letter){
+        String message = "No encontrado";
+
+        if(letter.equals("A") || letter.equals("a")){
+           message = clubTeams[0].showTeamInfo();
+        }
+        
+        if(letter.equals("B") || letter.equals("b") ){
+          message = clubTeams[1].showTeamInfo();
+        }
+
+        return message;
+    }
+
+    public String showEmployeeInfo(int id){
+
+        String message = "Empleado no encontrado";
+
+        
+            for(int i = 0 ; i < employees.size() ; i++ ){
+                if (  employees.get(i) != null   &&   employees.get(i).getId() == id ){
+                    message = employees.get(i).showInfo();
+                }
+            }
+          
+        return message;
+    }
+
+    // -------------------- Auxiliar Operations -------------------------
 
     public String addTeam(String teamName) {
         String message = "No añadido";
@@ -47,17 +213,15 @@ public class SoccerClub {
         ClubTeam newteam = new ClubTeam(teamName);
 
         for(int i = 0; i < TEAMS_SIZE ; i++){
-            if( !add && teams[i] != null ){
-                teams[i] = newteam;
+            if( !add && clubTeams[i] != null ){
+                clubTeams[i] = newteam;
                 add = true;
                 message = "Añadido"; 
             }
         }
-
         return message;
     }
 
-    // -------------------- Auxiliar Operations -------------------------
 
     // -------------------- getters / settes -------------------------
 

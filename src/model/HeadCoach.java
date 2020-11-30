@@ -17,7 +17,7 @@ public class HeadCoach extends Coach implements SoccerWord {
 
         String message = "";
 
-        message = "********** Jugador **********" + "\n";
+        message = "********** Entrenador **********" + "\n";
         message += "** Nombre: " + getEmployeeName() + "\n";
         message += "** ID: " + getId() + "\n";
         message += "** Salario: " + getSalary() + "\n";
