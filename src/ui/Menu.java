@@ -26,17 +26,19 @@ public class Menu {
 
     /**
      * Call Main Object <br>
-     * <b>pre:</b> Call to create a SoccerClub object. ReadInitialdata must be created <br>
+     * <b>pre:</b> Call to create a SoccerClub object. ReadInitialdata must be
+     * created <br>
      * <b>post:</b> Soccer Club
      */
     public Menu() {
-        //this.soccerClub = readInitialData();
+        // this.soccerClub = readInitialData();
         soccerClub = new SoccerClub();
     }
 
     /**
      * Call soccer club constructor <br>
-     * <b>pre:</b> Call the funtion to create a SoccerClub object. Soccer club consturctor must be created <br>
+     * <b>pre:</b> Call the funtion to create a SoccerClub object. Soccer club
+     * consturctor must be created <br>
      * <b>post:</b> Soccer Club
      */
     public SoccerClub readInitialData() {
@@ -61,11 +63,11 @@ public class Menu {
      */
     public void showMenu() {
         System.out.println("");
-        System.out.println("(1) Para ingresar un nuevo empleado ");
-        System.out.println("(2) Para eliminar un empleado ");
-        System.out.println("(3) Para asignar un empleado a un equipo ");
-        System.out.println("(4) Para quitar a un empleado a un equipo ");
-        System.out.println("(5) Para mostrar la información de un empleado o equipo ");
+        System.out.println("(1) Para ingresar un nuevo empleado "); // Done
+        System.out.println("(2) Para eliminar un empleado "); // Done
+        System.out.println("(3) Para asignar un empleado a un equipo "); // Done
+        System.out.println("(4) Para quitar a un empleado a un equipo "); // Done
+        System.out.println("(5) Para mostrar la información de un empleado o equipo "); // Done
         System.out.println("(6) Para editar la información de un empleado o equipo ");
         System.out.println("(7) Para añadir una alineación de equipo ");
         System.out.println("(8) Para mostrar la alineación de un equipo ");
@@ -73,16 +75,310 @@ public class Menu {
         System.out.println("(10) Para añadir a un entrenador a las oficinas ");
         System.out.println("(11) Para mostrar la ubicación del jugador ");
         System.out.println("(12) Para mostrar la ubicación del entrenador ");
-        System.out.println("(13) Para mostrar la información general del club ");
-        System.out.println("(14) Para salir ");
+        System.out.println("(13) Para mostrar la información general del club "); // Done
+        System.out.println("(14) Para salir "); // Done
 
         System.out.println("");
     }
 
-    ///-----------------------------------------------------
+    /// -----------------------------------------------------
 
+    public String editEmployee() {
+        String message = "";
 
-    public String addEmployee (){
+        String askId = "Ingrese el id del empleado ";
+        String askValue = "ingrese el nuevo valor ";
+
+        System.out.println("(1) Para editar un entrenador ");
+        System.out.println("(2) Para editar un asistente ");
+        System.out.println("(3) Para editar un jugador ");
+        System.out.println("");
+
+        int selection = Integer.parseInt(sc.nextLine());
+
+        if (selection == 1) {
+            System.out.println("(1) Para editar nombre ");
+            System.out.println("(2) Para editar id ");
+            System.out.println("(3) Para editar salario ");
+            System.out.println("(4) Para editar años de experiencia ");
+            System.out.println("(5) Para editar Campeonatos ganados ");
+            System.out.println("(6) Para editar número de equipos acargo ");
+            System.out.println("");
+
+            int choice = Integer.parseInt(sc.nextLine());
+
+            System.out.println(askId);
+            int id = Integer.parseInt(sc.nextLine());
+            int numb = 0;
+
+            System.out.println(askValue);
+
+            switch (choice) {
+                case 1:
+                    String value = (sc.nextLine());
+                    message = soccerClub.setEmployeeName(id, value);
+                    break;
+                case 2:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setEmployeeId(id, numb);
+                    break;
+
+                case 3:
+                    float num = Float.parseFloat(sc.nextLine());
+                    message = soccerClub.setEmployeeSalary(id, num);
+                    break;
+
+                case 4:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setCoachExperience(id, numb);
+                    break;
+
+                case 5:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setCoachChampionships(id, numb);
+                    break;
+
+                case 6:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setCoachTeamsInCharge(id, numb);
+                    break;
+
+                default:
+                    message = "Número erroneo ";
+                    break;
+            }
+
+        }
+
+        if (selection == 2) {
+            System.out.println("(1) Para editar nombre ");
+            System.out.println("(2) Para editar id ");
+            System.out.println("(3) Para editar salario ");
+            System.out.println("(4) Para editar años de experiencia ");
+            System.out.println("(5) Para editar profesión en el deporte (si-no) ");
+            System.out.println("(6) Para editar la especialidad ");
+            System.out.println("");
+
+            int choice = Integer.parseInt(sc.nextLine());
+
+            System.out.println(askId);
+            int id = Integer.parseInt(sc.nextLine());
+            int numb = 0;
+
+            System.out.println(askValue);
+
+            switch (choice) {
+                case 1:
+                    String value = (sc.nextLine());
+                    message = soccerClub.setEmployeeName(id, value);
+                    break;
+                case 2:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setEmployeeId(id, numb);
+                    break;
+
+                case 3:
+                    float num = Float.parseFloat(sc.nextLine());
+                    message = soccerClub.setEmployeeSalary(id, num);
+                    break;
+
+                case 4:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setCoachExperience(id, numb);
+                    break;
+
+                case 5:
+                    value = (sc.nextLine());
+                    message = soccerClub.setAssistanProfssional(id, value);
+                    break;
+
+                case 6:
+
+                    do {
+                        System.out.println("");
+        
+                        System.out.println("(1) Ofensiva ");
+                        System.out.println("(2) Defensiva ");
+                        System.out.println("(3) Pocesión ");
+                        System.out.println("(4) Laboratorio ");
+        
+                        numb = Integer.parseInt(sc.nextLine());
+        
+                    } while (numb > 4 || numb < 1);
+        
+                    numb = numb - 1;
+
+                    message = soccerClub.setAssistanExpertise(id, numb);
+                    break;
+
+                default:
+                    message = "Número erroneo ";
+                    break;
+            }
+
+        }
+
+        if (selection == 3) {
+            System.out.println("(1) Para editar nombre ");
+            System.out.println("(2) Para editar id ");
+            System.out.println("(3) Para editar salario ");
+            System.out.println("(4) Para editar número de la camisa ");
+            System.out.println("(5) Para editar goles anotados ");
+            System.out.println("(6) Para editar marca promedio ");
+            System.out.println("(7) Para editar posición ");
+            System.out.println("");
+
+            int choice = Integer.parseInt(sc.nextLine());
+
+            System.out.println(askId);
+            int id = Integer.parseInt(sc.nextLine());
+            int numb = 0;
+
+            System.out.println(askValue);
+
+            switch (choice) {
+                case 1:
+                    String value = (sc.nextLine());
+                    message = soccerClub.setEmployeeName(id, value);
+                    break;
+                case 2:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setEmployeeId(id, numb);
+                    break;
+
+                case 3:
+                    float num = Float.parseFloat(sc.nextLine());
+                    message = soccerClub.setEmployeeSalary(id, num);
+                    break;
+
+                case 4:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setPlayerShirtNumber(id, numb);
+                    break;
+
+                case 5:
+                    numb = Integer.parseInt(sc.nextLine());
+                    message = soccerClub.setPalyerScoreGoals(id, numb);
+                    break;
+                
+                case 6:
+                    double mark = Double.parseDouble(sc.nextLine());
+                    message = soccerClub.setPlayerAverageMark(id, mark);
+                    break;
+
+                case 7:
+
+                    do {
+                        System.out.println("");
+        
+                        System.out.println("(1) Arquero ");
+                        System.out.println("(2) Defensa ");
+                        System.out.println("(3) Medio campista ");
+                        System.out.println("(4) Delantero ");
+        
+                        numb = Integer.parseInt(sc.nextLine());
+        
+                    } while (numb > 4 || numb < 1);
+        
+                    numb = numb - 1;
+
+                    message = soccerClub.setPlayerRole(id, numb);
+                    break;
+
+                default:
+                    message = "Número erroneo ";
+                    break;
+            }
+
+        }
+
+        if (selection < 1 || selection > 3) {
+            message = "Número no valido ";
+        }
+
+        return message;
+    }
+
+    public String takeOutEmployeeFromTeam() {
+
+        String message = "";
+
+        System.out.println("Categoria del club (A - B) ");
+        String letter = (sc.nextLine());
+
+        System.out.println("Id del entrenador ");
+        int id = Integer.parseInt(sc.nextLine());
+
+        message = soccerClub.takeOutFromTeam(letter, id);
+        System.out.println("");
+
+        return message;
+    }
+
+    public String assingEmployeeToTeam() {
+        String message = "No se pudo assignar";
+        String categoryAsk = "Categoria del club (A - B) ";
+
+        System.out.println("(1) Para asignar un entrenador ");
+        System.out.println("(2) Para asignar un asistente ");
+        System.out.println("(3) Para asignar un jugador ");
+
+        int selection = Integer.parseInt(sc.nextLine());
+        System.out.println("");
+
+        // ---------------- Player
+
+        if (selection == 1) {
+
+            System.out.println(categoryAsk);
+            String letter = (sc.nextLine());
+
+            System.out.println("Id del entrenador ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            message = soccerClub.addCoachToTeam(letter, id);
+
+        }
+
+        // ---------------- Head Coach
+
+        if (selection == 2) {
+
+            System.out.println(categoryAsk);
+            String letter = (sc.nextLine());
+
+            System.out.println("Id  del asistente ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            message = soccerClub.addAssitantToTeam(letter, id);
+
+        }
+
+        // ---------------- Assitan Coach
+
+        if (selection == 3) {
+
+            System.out.println(categoryAsk);
+            String letter = (sc.nextLine());
+
+            System.out.println("Id del jugador ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            message = soccerClub.addPlayertToTeam(letter, id);
+
+        }
+
+        // ---------------- Error
+
+        if (selection < 1 || selection > 3) {
+            message = "Número no valido ";
+        }
+
+        return message;
+
+    }
+
+    public String addEmployee() {
 
         String message = "";
 
@@ -91,10 +387,11 @@ public class Menu {
         System.out.println("(3) Para ingresar un nuevo asistente ");
 
         int selection = Integer.parseInt(sc.nextLine());
+        System.out.println("");
 
-        //---------------- Player
+        // ---------------- Player
 
-        if(selection == 1 ){
+        if (selection == 1) {
 
             System.out.println("Nombre del jugador y apellido ");
             String employeeName = (sc.nextLine());
@@ -112,36 +409,34 @@ public class Menu {
             int scoredGoals = Integer.parseInt(sc.nextLine());
 
             int averageMark = 0;
-            
-            do{ 
+
+            do {
                 System.out.println("Calificación promedio 0 a 10 ");
                 averageMark = Integer.parseInt(sc.nextLine());
-            }while(averageMark > 10 || averageMark < 0);
-            
+            } while (averageMark > 10 || averageMark < 0);
+
             int roleNum = 0;
 
-            do{
+            do {
                 System.out.println("Número del rol");
-                System.out.println(""); 
+                System.out.println("");
 
                 System.out.println("(1) Arquero ");
                 System.out.println("(2) Defensa ");
                 System.out.println("(3) Medio campista ");
-                System.out.println("(4) Delantero "); 
+                System.out.println("(4) Delantero ");
                 roleNum = Integer.parseInt(sc.nextLine());
-                          
 
-            }while(roleNum > 4 || roleNum < 1);
+            } while (roleNum > 4 || roleNum < 1);
 
             roleNum = roleNum - 1;
-
 
             message = soccerClub.addEmployee(employeeName, id, salary, shirtNumber, scoredGoals, averageMark, roleNum);
         }
 
-        //---------------- Head Coach
+        // ---------------- Head Coach
 
-        if(selection == 2 ){
+        if (selection == 2) {
 
             System.out.println("Nombre del entrenador y apellido ");
             String employeeName = (sc.nextLine());
@@ -161,13 +456,13 @@ public class Menu {
             System.out.println("Equipos acargo ");
             int teamsInCharge = Integer.parseInt(sc.nextLine());
 
-
-            message = soccerClub.addEmployee (employeeName, id, salary, experienceYears, achivedChampionships, teamsInCharge);
+            message = soccerClub.addEmployee(employeeName, id, salary, experienceYears, achivedChampionships,
+                    teamsInCharge);
         }
 
-        //---------------- Assitan Coach
+        // ---------------- Assitan Coach
 
-        if(selection == 3 ){
+        if (selection == 3) {
 
             System.out.println("Nombre del asistente y apellido ");
             String employeeName = (sc.nextLine());
@@ -186,7 +481,7 @@ public class Menu {
 
             int expertiseNum = 0;
 
-            do{
+            do {
                 System.out.println("Número la especialdiad ");
                 System.out.println("");
 
@@ -197,23 +492,23 @@ public class Menu {
 
                 expertiseNum = Integer.parseInt(sc.nextLine());
 
-                }while(expertiseNum > 4 || expertiseNum < 1);
-    
-                expertiseNum = expertiseNum - 1;
+            } while (expertiseNum > 4 || expertiseNum < 1);
+
+            expertiseNum = expertiseNum - 1;
 
             message = soccerClub.addEmployee(employeeName, id, salary, experienceYears, isProfessional, expertiseNum);
         }
 
-        //---------------- Error
+        // ---------------- Error
 
-        if( selection < 1 || selection > 3){
+        if (selection < 1 || selection > 3) {
             message = "Numero no valido ";
         }
 
         return message;
     }
 
-    public String fireEmployee(){
+    public String fireEmployee() {
 
         String message = "";
 
@@ -225,8 +520,7 @@ public class Menu {
         return message;
     }
 
-
-    public String showPlayerTeamInfo (){
+    public String showPlayerTeamInfo() {
 
         String message = "No encontrado ";
 
@@ -234,34 +528,31 @@ public class Menu {
         System.out.println("(2) Para ver la información de equipo ");
         int selection = Integer.parseInt(sc.nextLine());
 
-        if(selection == 1 ){
+        if (selection == 1) {
             System.out.println("Ingresa el numero de identificación ");
             int id = Integer.parseInt(sc.nextLine());
             message = soccerClub.showEmployeeInfo(id);
         }
 
-        if(selection == 2 ){
+        if (selection == 2) {
             System.out.println("Elije la catedoria del equipo (A o B) ");
             String letter = (sc.nextLine());
-            message =  soccerClub.showTeamInfo(letter);
+            message = soccerClub.showTeamInfo(letter);
         }
 
-        if(selection < 1 || selection > 2){
+        if (selection < 1 || selection > 2) {
             message = "Numero no valido";
         }
 
         return message;
     }
 
-
-
-
-    
-    ///-----------------------------------------------------
+    /// -----------------------------------------------------
 
     /**
      * Read options <br>
-     * <b>pre:</b> Read and store the user selection. Playlists array must be initialized <br>
+     * <b>pre:</b> Read and store the user selection. Playlists array must be
+     * initialized <br>
      * <b>post:</b> Users information list
      */
     public int readOption() {
@@ -273,8 +564,10 @@ public class Menu {
     // Menu Selections
     /**
      * Cases main menu <br>
-     * <b>pre:</b> Cases to be done according to the user selection. Main object must be initialized and all methos must be created<br>
+     * <b>pre:</b> Cases to be done according to the user selection. Main object
+     * must be initialized and all methos must be created<br>
      * <b>post:</b> message
+     * 
      * @param choice Value selected by the user. choice != null
      */
     public void doOperation(int choice) {
@@ -288,11 +581,11 @@ public class Menu {
                 break;
 
             case ALLOCATE_EMPLOYEE_TEAM:
-                System.out.println("Pendiente 3");
+                System.out.println(assingEmployeeToTeam());
                 break;
 
             case TAKEOUT_EMPLOYEE_TEAM:
-                System.out.println("Pendiente 4");
+                System.out.println(takeOutEmployeeFromTeam());
                 break;
 
             case SHOW_PARTICULAR_INFO:
@@ -300,7 +593,7 @@ public class Menu {
                 break;
 
             case EDIT_PARTICULAR_INFO:
-                System.out.println("Pendiente 6");
+                System.out.println(editEmployee());
                 break;
 
             case ADD_LINEUP_TO_TEAM:

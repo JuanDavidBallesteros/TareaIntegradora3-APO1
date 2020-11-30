@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class SoccerClub {
 
     private static final int TEAMS_SIZE = 2;
+
     private String clubName;
     private int nit;
     private String foundationDate;
@@ -50,9 +51,305 @@ public class SoccerClub {
         clubTeams[1] = new ClubTeam ("Chocapics");
 
         employees =  new ArrayList<>();
+
+        HeadCoach testCoach = new HeadCoach("Carter", 123, 3452, 6, 5, 1);
+        AssitanCoach testAssitan = new AssitanCoach("Pedro", 456, 2432, 4, "si", 2);
+        Player testPlayer = new Player("Messi", 789, 3341, 10, 100, 4, 3);
+
+        employees.add(testCoach);
+        employees.add(testAssitan);
+        employees.add(testPlayer);
     }
 
     // -------------------- Menu Operations -------------------------
+    // option 6
+
+    //Employee object
+    public String setEmployeeName (int id, String name){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId()) {
+                message = "Cambiando";  
+                employees.get(i).setEmployeeName(name);
+            }
+        }
+
+        return message;
+
+    }
+
+    public String setEmployeeId (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId()) {
+                message = "Cambiando";  
+                employees.get(i).setId(numb);
+            }
+        }
+
+        return message;
+    }
+
+    public String setEmployeeSalary (int id, float numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId()) {
+                message = "Cambiando";  
+                employees.get(i).setSalary(numb);
+            }
+        }
+        return message;
+    }
+
+    //Coach object
+    public String setCoachExperience (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof Coach) {
+                Coach coach = (Coach) employees.get(i);
+                message = "Cambiado";
+                coach.setExperienceYears(numb);
+            }
+        }
+        return message;
+    }
+
+    //Head coach object
+    public String setCoachChampionships (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof HeadCoach) {
+                HeadCoach coach = (HeadCoach) employees.get(i);
+                message = "Cambiado";
+                coach.setAchivedChampionships(numb);
+            }
+        }
+        return message;
+    }
+
+    public String setCoachTeamsInCharge (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof HeadCoach) {
+                HeadCoach coach = (HeadCoach) employees.get(i);
+                message = "Cambiado";
+                coach.setTeamsInCharge(numb);
+            }
+        }
+        return message;
+    }
+
+    //Assistan coach object
+    public String setAssistanProfssional (int id, String text){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof AssitanCoach) {
+                AssitanCoach coach = (AssitanCoach) employees.get(i);
+                message = "Cambiado";
+                coach.setSoccerProfessional(text);
+            }
+        }
+        return message;
+    }
+
+    public String setAssistanExpertise (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof AssitanCoach) {
+                AssitanCoach coach = (AssitanCoach) employees.get(i);
+                message = "Cambiado";
+                coach.setExpertise(numb);
+            }
+        }
+        return message;
+    }
+
+    //Player Object
+    public String setPlayerShirtNumber (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                Player player = (Player) employees.get(i);
+                message = "Cambiado";
+                player.setShirtNumber(numb);
+            }
+        }
+        return message;
+    }
+
+    public String setPalyerScoreGoals (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                Player player = (Player) employees.get(i);
+                message = "Cambiado";
+                player.setScoredGoals(numb);
+            }
+        }
+        return message;
+    }
+
+    public String setPlayerAverageMark (int id, double numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                Player player = (Player) employees.get(i);
+                message = "Cambiado";
+                player.setAverageMark(numb);;
+            }
+        }
+        return message;
+    }
+
+    public String setPlayerRole (int id, int numb){
+        String message = "No cambiado";
+
+        for(int i = 0; i < employees.size() ; i++ ){
+            if(id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                Player player = (Player) employees.get(i);
+                message = "Cambiado";
+                player.setRole(numb);
+            }
+        }
+        return message;
+    }
+
+    // Options 1 to 5
+    public String takeOutFromTeam(String letter, int id){
+        String message = "No encontrado";
+        String answer = "Empleado elimido del equipo";
+        
+        if(letter.equals("A") || letter.equals("a")){
+            for(int i = 0 ; i < employees.size() ; i++ ){
+                if (  employees.get(i) instanceof Player && employees.get(i).getId() == id ){
+                    message = answer;
+                    Player player = (Player) employees.get(i);
+                    clubTeams[0].getPlayers().remove(player);
+                }
+                if (  employees.get(i) instanceof AssitanCoach && employees.get(i).getId() == id ){
+                    message = answer;
+                    AssitanCoach assitant = (AssitanCoach) employees.get(i);
+                    clubTeams[0].getAssitants().remove(assitant);
+                }
+                if (  employees.get(i) instanceof Coach && employees.get(i).getId() == id ){
+                    message = answer;
+                    clubTeams[0].setCoach(null);
+                }     
+            }
+        }
+
+
+        if(letter.equals("B") || letter.equals("b")){
+            for(int i = 0 ; i < employees.size() ; i++ ){
+                if (  employees.get(i) instanceof Player && employees.get(i).getId() == id ){
+                    message = answer;
+                    Player player = (Player) employees.get(i);
+                    clubTeams[1].getPlayers().remove(player);
+                }
+                if (  employees.get(i) instanceof AssitanCoach && employees.get(i).getId() == id ){
+                    message = answer;
+                    AssitanCoach assitant = (AssitanCoach) employees.get(i);
+                    clubTeams[1].getAssitants().remove(assitant);
+                }
+                if (  employees.get(i) instanceof Coach && employees.get(i).getId() == id ){
+                    message = answer;
+                    clubTeams[1].setCoach(null);
+                }     
+            }
+        }
+          
+        return message;
+    }
+
+    //Add coach to team
+    public String addCoachToTeam(String letter, int id){
+        String message = " No se pudo ajustar el entrenador";
+        HeadCoach coach = null;
+
+        if(letter.equals("A") || letter.equals("a")){
+            for(int i = 0; i < employees.size() ; i++ ){
+                if(id == employees.get(i).getId() && employees.get(i) instanceof HeadCoach) {
+                    coach = (HeadCoach) employees.get(i);
+                    message = clubTeams[0].setCoach(coach);  
+                }
+            }
+         }
+         
+         if(letter.equals("B") || letter.equals("b") ){
+            for(int i = 0; i < employees.size() ; i++ ){
+                if(id == employees.get(i).getId() && employees.get(i) instanceof HeadCoach) {
+                    coach = (HeadCoach) employees.get(i);
+                    message = clubTeams[1].setCoach(coach);  
+                }
+            }
+         }
+
+        return message;
+    }
+    //Add assitant to team
+
+    public String addAssitantToTeam(String letter, int id){
+        String message = " No se pudo añadir el asistente";
+        AssitanCoach assistan = null;
+
+        if(letter.equals("A") || letter.equals("a")){
+            for(int i = 0; i < employees.size() ; i++ ){
+                if(id == employees.get(i).getId() && employees.get(i) instanceof AssitanCoach) {
+                    assistan = (AssitanCoach) employees.get(i);
+                    message = clubTeams[0].addAssitantToTeam(assistan);  
+                }
+            }
+         }
+         
+         if(letter.equals("B") || letter.equals("b") ){
+            for(int i = 0; i < employees.size() ; i++ ){
+                if(id == employees.get(i).getId() && employees.get(i) instanceof AssitanCoach) {
+                    assistan = (AssitanCoach) employees.get(i);
+                    message = clubTeams[1].addAssitantToTeam(assistan);  
+                }
+            }
+         }
+
+        return message;
+    }
+
+    //Add player to team
+
+    public String addPlayertToTeam(String letter, int id){
+        String message = " No se pudo añadir el jugador";
+        Player player = null;
+
+        if(letter.equals("A") || letter.equals("a")){
+            for(int i = 0; i < employees.size() ; i++ ){
+                if(id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                    player = (Player) employees.get(i);
+                    message = clubTeams[0].addPlayerToTeam(player);  
+                }
+            }
+         }
+         
+         if(letter.equals("B") || letter.equals("b") ){
+            for(int i = 0; i < employees.size() ; i++ ){
+                if(id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                    player = (Player) employees.get(i);
+                    message = clubTeams[1].addPlayerToTeam(player);  
+                }
+            }
+         }
+
+        return message;
+    }
 
     //Player
     public String addEmployee(String employeeName, int id, double salary, int shirtNumber, int scoredGoals, double averageMark, int roleNum){
@@ -280,8 +577,5 @@ public class SoccerClub {
 	 */
     public void setFoundationDate(String foundationDate) {
         this.foundationDate = foundationDate;
-    }
-
-    
-    
+    } 
 }

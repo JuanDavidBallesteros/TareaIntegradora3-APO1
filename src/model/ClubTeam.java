@@ -4,8 +4,16 @@ import java.util.ArrayList;
 
 public class ClubTeam {
 
+    private static final int PLAYERS_SIZE = 25;
+    private static final int ASSITANTS_SIZE = 3;
+
     private String teamName;
+
     private ArrayList<LineUp> lineUps;
+
+    private ArrayList<Player> players;
+    private ArrayList<AssitanCoach> assitants;
+    private HeadCoach coach;
 
     // -------------------- constructor -------------------------
     /**
@@ -17,19 +25,76 @@ public class ClubTeam {
     public ClubTeam(String teamName) {
         this.teamName = teamName;
         lineUps = new ArrayList<>();
+
+        players = new ArrayList<>();
+        assitants = new ArrayList<>();
     }
     
 
     // -------------------- Auxiliar Operations -------------------------
 
+    //Add player
+    public String addPlayerToTeam (Player player) {
+        String message = "";
+        boolean add = true;
+
+        for(int i = 0; i < players.size() ; i++ ){
+            if(player.equals(players.get(i)) || players.size() < 25 ){
+                add = false;
+                message = "No se pudo asisgnar el jugador";
+            }
+        }
+        if (add){
+            players.add(player);
+            message = "Jugador asignado";
+        }
+
+        return message;
+    }
+
+    //Add Assistant
+    public String addAssitantToTeam (AssitanCoach assitanCoach) {
+        String message = "";
+        boolean add = true;
+
+        for(int i = 0; i < assitants.size() ; i++ ){
+            if(assitanCoach.equals(assitants.get(i)) || assitants.size() < 3 ){
+                add = false;
+                message = "No se pudo asisgnar el asistente";
+            }
+        }
+        if (add){
+            assitants.add(assitanCoach);
+            message = "Jugador asignado";
+        }
+
+        return message;
+    }
+
+    // Show Info
     public String showTeamInfo (){
         String message = "******** Información Equipo ********" + "\n";
 
-
         message += "** Nombre del equipo: " + getTeamName() + "\n";
-        message += "** Número de liniaciones: " + lineUps.size() + "\n";
+        message += "** Número de aliniaciones: " + lineUps.size() + "\n";
 
+        message += "----------- Team Coach " + "\n";
+        if(coach != null){
+            message += coach.showInfo() + "\n";
+        } else {
+            message += "**** Sin entrenador " + "\n";
+        }
 
+        message += "----------- Team Asistants: " + assitants.size() + "\n";
+        for(int i = 0 ; i < assitants.size() ; i++ ){
+                message  = message + assitants.get(i).showInfo() + "\n";
+        }
+
+        message += "----------- Team Players: " + players.size() + "\n";
+            for(int i = 0 ; i < players.size() ; i++ ){
+                message  = message + players.get(i).showInfo() + "\n";
+        }
+        
         return message;
     }
 
@@ -63,5 +128,23 @@ public class ClubTeam {
     public ArrayList<LineUp> getLineUps() {
         return lineUps;
     }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public ArrayList<AssitanCoach> getAssitants() {
+        return assitants;
+    }
+
+    public HeadCoach getCoach() {
+        return coach;
+    }
+
+    public String setCoach(HeadCoach coach) {
+        String message = "Entrenador cambiado";  
+        this.coach = coach;
+        return message;
+    }    
     
 }
