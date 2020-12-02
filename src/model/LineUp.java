@@ -2,27 +2,27 @@ package model;
 
 public class LineUp {
 
-    public static final  int ROWS = 7;
-    public static final  int COLS =10;
+    public static final int ROWS = 10;
+    public static final int COLS = 7;
 
     private String type;
     private String lineUpDate;
     private String lineUpNum;
     private int typeNum;
-    private int [][] lineUp;
-    
+    private int[][] lineUp;
 
     // -------------------- constructor -------------------------
     /**
      * Cosntructor LineUp Object <br>
      * <b>pre:</b> Create a LineUp object. <br>
      * <b>post:</b> LineUp created
+     * 
      * @param lineUpDate Creation date. lineUpDate !=null
-     * @param lineUpNum The secuence of numbers. lineUpNum !=null
-     * @param typeNum The enum position. typeNum !=null
+     * @param lineUpNum  The secuence of numbers. lineUpNum !=null
+     * @param typeNum    The enum position. typeNum !=null
      */
     public LineUp(String lineUpDate, String lineUpNum, int typeNum) {
-        
+
         this.lineUpDate = lineUpDate;
         this.lineUpNum = lineUpNum;
         this.typeNum = typeNum;
@@ -32,27 +32,85 @@ public class LineUp {
 
     // -------------------- Auxiliar Operations -------------------------
 
-    public int[][] createImage (){
+    public int[][] createImage() {
 
         int[][] matrix = new int[ROWS][COLS];
+        int[] rows = new int[ROWS];
+
+        int[] pair = { 3, 5, 2, 6, 1, 7, 4 };
+        int[] odd = { 4, 3, 5, 2, 6, 1, 7 };
 
         String[] parts = lineUpNum.split("-");
-        int part1 = Integer.parseInt(parts[0]);
-        int part2 = Integer.parseInt(parts[1]); 
-        int part3 = Integer.parseInt(parts[2]);
 
+        for (int i = 0; i < parts.length; i++) {
+            rows[i] = Integer.valueOf(parts[i]);
+        }
+
+        for (int i = 0; i < rows.length; i++) {
+            for (int j = 0; j < rows[i]; j++) {
+                if (rows[i] % 2 == 0) {
+                    int k = pair[j] - 1;
+                    matrix[i][k] = 1;
+                }
+                if (rows[i] % 2 != 0) {
+                    int k = odd[j] - 1;
+                    matrix[i][k] = 1;
+                }
+            }
+        }
 
         return matrix;
     }
 
-    public String showInfo(){
+    private String matrixImg() {
+
+        lineUp = createImage();
+
+        String message = "";
+
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                message += lineUp[i][j];
+            }
+            message += "\n";
+        }
+        return message;
+    }
+
+    private String imgToText() {
+        String message = "";
+        lineUp = createImage();
+
+        int count = 0;
+
+        for (int i = 0; i < ROWS; i++) {
+            count = 0;
+            for (int j = 0; j < COLS; j++) {
+                if (lineUp[i][j] != 0) {
+                    count++;
+                }
+            }
+
+            if (count != 0) {
+                message += count + "-";
+            }
+        }
+
+        if(message.length() > 1){
+        message = message.substring(0, message.length() - 1);
+    }
+        return message;
+    }
+
+    public String showInfo() {
         String message = "";
 
         message = "********** Formación **********" + "\n";
-        message += "** Tipo: " + getType()  + "\n";
-        message += "** Fecha: " + getLineUpDate()  + "\n";
+        message += "** Tipo: " + getType() + "\n";
+        message += "** Fecha: " + getLineUpDate() + "\n";
         message += "** Formación: " + getLineUpNum() + "\n";
-        message += "** Imagen: " + "shirtNumber"  + "\n";   /// Imagen creada matriz
+
+        message += "** Imagen: " + imgToText() + "\n" + matrixImg() + "\n"; /// Imagen creada matriz
         message += "*****************************" + "\n";
 
         return message;
@@ -70,13 +128,15 @@ public class LineUp {
     }
 
     /**
-	 * Set type  <br>
-	 * <b>pre:</b> Set the lineup type. LineUp must be created. <br>
-	 * <b>post:</b> Atribute updated
+     * Set type <br>
+     * <b>pre:</b> Set the lineup type. LineUp must be created. <br>
+     * <b>post:</b> Atribute updated
+     * 
      * @param typeNum An atribute of the object. typeNum != null
-	 */
+     */
     public void setType(int typeNum) {
         this.type = Tactics.values()[typeNum].name();
+        this.typeNum = typeNum;
     }
 
     /**
@@ -89,11 +149,12 @@ public class LineUp {
     }
 
     /**
-	 * Set lineUpDate  <br>
-	 * <b>pre:</b> Set the lineUp date. LineUp must be created. <br>
-	 * <b>post:</b> Atribute updated
+     * Set lineUpDate <br>
+     * <b>pre:</b> Set the lineUp date. LineUp must be created. <br>
+     * <b>post:</b> Atribute updated
+     * 
      * @param lineUpDate An atribute of the object. lineUpDate != null
-	 */
+     */
     public void setLineUpDate(String lineUpDate) {
         this.lineUpDate = lineUpDate;
     }
@@ -108,11 +169,12 @@ public class LineUp {
     }
 
     /**
-	 * Set lineUpNum  <br>
-	 * <b>pre:</b> Set the lineUpNum. LineUp must be created. <br>
-	 * <b>post:</b> Atribute updated
+     * Set lineUpNum <br>
+     * <b>pre:</b> Set the lineUpNum. LineUp must be created. <br>
+     * <b>post:</b> Atribute updated
+     * 
      * @param lineUpNum An atribute of the object. lineUpNum != null
-	 */
+     */
     public void setLineUpNum(String lineUpNum) {
         this.lineUpNum = lineUpNum;
     }
@@ -124,6 +186,10 @@ public class LineUp {
      */
     public int[][] getLineUp() {
         return lineUp;
-    }    
-    
+    }
+
+    public int getTypeNum() {
+        return typeNum;
+    }
+
 }

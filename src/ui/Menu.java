@@ -68,13 +68,13 @@ public class Menu {
         System.out.println("(3) Para asignar un empleado a un equipo "); // Done
         System.out.println("(4) Para quitar a un empleado a un equipo "); // Done
         System.out.println("(5) Para mostrar la información de un empleado o equipo "); // Done
-        System.out.println("(6) Para editar la información de un empleado o equipo ");
-        System.out.println("(7) Para añadir una alineación de equipo ");
-        System.out.println("(8) Para mostrar la alineación de un equipo ");
-        System.out.println("(9) Para añadir un jugador al camerino ");
-        System.out.println("(10) Para añadir a un entrenador a las oficinas ");
+        System.out.println("(6) Para editar la información de un empleado o equipo "); // Done
+        System.out.println("(7) Para añadir una alineación de equipo "); // Done
+        System.out.println("(8) Para mostrar las alineaciniaciones de un equipo "); // Done
+        System.out.println("(9) Para añadir un jugador a camerino "); 
+        System.out.println("(10) Para añadir a un entrenador a las oficinas "); // Done
         System.out.println("(11) Para mostrar la ubicación del jugador ");
-        System.out.println("(12) Para mostrar la ubicación del entrenador ");
+        System.out.println("(12) Para mostrar la ubicación del entrenador "); // Done
         System.out.println("(13) Para mostrar la información general del club "); // Done
         System.out.println("(14) Para salir "); // Done
 
@@ -82,6 +82,70 @@ public class Menu {
     }
 
     /// -----------------------------------------------------
+
+    public String addCoachToOffice(){
+        
+        System.out.println("Ingresa el id");
+        int id = Integer.parseInt(sc.nextLine());
+
+        return soccerClub.addCoachToOffice(id);
+
+    }
+
+    public String coachOffice(){
+        
+        System.out.println("Ingresa el id");
+        int id = Integer.parseInt(sc.nextLine());
+
+        return soccerClub.coachOffice(id);
+
+    }
+
+    public String showLineUpsTeam(){
+        
+        System.out.println("Selecciona el club club (A - B) ");
+        String letter = (sc.nextLine());
+
+        return soccerClub.showLineUps(letter);
+
+    }
+
+    public String addLineUp(){
+        String message = "";
+
+        System.out.println("Selecciona el club club (A - B) ");
+        String letter = (sc.nextLine());
+
+        System.out.println("Ingresa la formación (4-4-3) ");
+        String lineUpNum = (sc.nextLine());
+
+        System.out.println("Ingresa la fecha ");
+        String lineUpDate = (sc.nextLine());
+
+        System.out.println("Ingresa el tipo ");
+
+        int typeNum = 0;
+
+        do {
+            System.out.println("");
+
+            System.out.println("(1) Pocesión ");
+            System.out.println("(2) Contrataque ");
+            System.out.println("(3) Presión ");
+            System.out.println("(4) Defecto ");
+
+            typeNum = Integer.parseInt(sc.nextLine());
+
+        } while (typeNum > 4 || typeNum < 1);
+
+        typeNum = typeNum - 1;
+        
+
+        message = soccerClub.addLineUpToTeam(letter, lineUpDate, lineUpNum, typeNum);
+        System.out.println("");
+
+        return message;
+    }
 
     public String editEmployee() {
         String message = "";
@@ -597,11 +661,11 @@ public class Menu {
                 break;
 
             case ADD_LINEUP_TO_TEAM:
-                System.out.println("Pendiente 7");
+                System.out.println(addLineUp());
                 break;
 
             case SHOW_LINEUP_TO_TEAM:
-                System.out.println("Pendiente 8");
+                System.out.println(showLineUpsTeam());
                 break;
 
             case ADD_PLAYER_DRESSROOM:
@@ -609,7 +673,7 @@ public class Menu {
                 break;
 
             case ADD_COACH_OFFICE:
-                System.out.println("Pendiente 10");
+                System.out.println(addCoachToOffice());
                 break;
 
             case UBICATION_PLAYER:
@@ -617,7 +681,7 @@ public class Menu {
                 break;
 
             case UBICATION_COAHC:
-                System.out.println("Pendiente 12");
+                System.out.println(coachOffice());
                 break;
 
             case SHOW_CLUB_INFO:
