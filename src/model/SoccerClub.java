@@ -89,8 +89,8 @@ public class SoccerClub {
 
     // -------------------- Menu Operations -------------------------
 
-    //option 9
-    public String addPlayerToDressRoom(int id){
+    // option 9
+    public String addPlayerToDressRoom(int id) {
         String message = "No se encontró el jugador";
 
         Player player = null;
@@ -100,41 +100,46 @@ public class SoccerClub {
 
         boolean added = false;
         boolean isSameTeam = false;
-        
+
         String teamDR1 = "";
         String teamDR2 = "";
 
+        String playerTeam = "n";
+
+
+        // Dressroom 1 is empty
         for (int i = 0; i < ROWS_DR1; i++) {
             for (int j = 0; j < COLS_DR1; j++) {
-                if(dressRoom1[i][j] != null){
+                if (dressRoom1[i][j] != null) {
                     emptyDR1 = false;
                 }
             }
         }
-
+        //dressroom 2 es empty
         for (int i = 0; i < ROWS_DR2; i++) {
             for (int j = 0; j < COLS_DR2; j++) {
-                if(dressRoom2[i][j] != null){
+                if (dressRoom2[i][j] != null) {
                     emptyDR2 = false;
                 }
             }
         }
-
+        //get the player by id
         for (int i = 0; i < employees.size(); i++) {
             if (id == employees.get(i).getId() && employees.get(i) instanceof Player) {
                 player = (Player) employees.get(i);
             }
         }
 
-        if(emptyDR1 && emptyDR2){
+        //both dessrooms empnty
+        if (emptyDR1 && emptyDR2) {
             for (int i = 0; i < ROWS_DR1; i++) {
-                
+
                 if (i % 2 == 0 && !added) {
                     for (int j = 0; j < COLS_DR2; j = j + 2) {
                         if (dressRoom1[i][j] == null) {
                             dressRoom1[i][j] = player;
                             added = true;
-                            message = "Jugador asignado ";
+                            
                         }
                     }
                 }
@@ -143,25 +148,131 @@ public class SoccerClub {
                         if (dressRoom1[i][j] == null) {
                             dressRoom1[i][j] = player;
                             added = true;
-                            message = " Jugador asignado  ";
+                            
                         }
                     }
                 }
             }
         }
 
-        if(!emptyDR1 || !emptyDR2){
+        //asing team to dressroom
+        if (!emptyDR1 || !emptyDR2) {
 
-            for (int i = 0; i < ROWS_DR1; i++){
-                for (int j = 1; j < COLS_DR2; j = j + 2) {
+            for (int i = 0; i < ROWS_DR1; i++) {
+                for (int j = 1; j < COLS_DR1; j = j + 2) {
                     if (dressRoom1[i][j] == null) {
-                        
+                        for (int k = 0; k < clubTeams[0].getPlayers().size(); k++) {
+                            if (dressRoom1[i][j].equals(clubTeams[0].getPlayers().get(k))) {
+                                teamDR1 = "a";
+                                teamDR2 = "b";
+                            }
+                        }
+                        for (int k = 0; k < clubTeams[1].getPlayers().size(); k++) {
+                            if (dressRoom1[i][j].equals(clubTeams[1].getPlayers().get(k))) {
+                                teamDR1 = "b";
+                                teamDR2 = "a";
+                            }
+                        }
                     }
+                }
+            }
+
+            for (int i = 0; i < ROWS_DR2; i++) {
+                for (int j = 1; j < COLS_DR2; j = j + 2) {
+                    if (dressRoom2[i][j] == null) {
+                        for (int k = 0; k < clubTeams[0].getPlayers().size(); k++) {
+                            if (dressRoom2[i][j].equals(clubTeams[0].getPlayers().get(k))) {
+                                teamDR2 = "a";
+                                teamDR1 = "b";
+                            }
+                        }
+                        for (int k = 0; k < clubTeams[1].getPlayers().size(); k++) {
+                            if (dressRoom2[i][j].equals(clubTeams[1].getPlayers().get(k))) {
+                                teamDR2 = "b";
+                                teamDR1 = "a";
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        //assing player team
+
+        for (int k = 0; k < clubTeams[0].getPlayers().size(); k++) {
+            if (player.equals(clubTeams[0].getPlayers().get(k))) {
+                playerTeam = "a";
+            }
+        }
+        for (int k = 0; k < clubTeams[1].getPlayers().size(); k++) {
+            if (player.equals(clubTeams[1].getPlayers().get(k))) {
+                playerTeam = "b";
             }
         }
 
+        //asing dressroom player
+
+        if(playerTeam.equals("a") && teamDR1.equals("a") && !added ){
+
+            for (int i = 0; i < ROWS_DR1; i++) {
+                for (int j = 1; j < COLS_DR1; j = j + 2) {
+                    if (dressRoom1[i][j] == null) {
+                        dressRoom1[i][j] = player;
+                        added = true;
+                       
+                    }
+                }
+            }
+
         }
-        
+
+        if(playerTeam.equals("a") && teamDR2.equals("a") && !added){
+
+            for (int i = 0; i < ROWS_DR2; i++) {
+                for (int j = 1; j < COLS_DR2; j = j + 2) {
+                    if (dressRoom2[i][j] == null) {
+                        dressRoom2[i][j] = player;
+                        added = true;
+                        
+                    }
+                }
+            }
+            
+        }
+
+        if(playerTeam.equals("b") && teamDR1.equals("b") && !added){
+
+            for (int i = 0; i < ROWS_DR1; i++) {
+                for (int j = 1; j < COLS_DR1; j = j + 2) {
+                    if (dressRoom1[i][j] == null) {
+                        dressRoom1[i][j] = player;
+                        added = true;
+                        
+                    }
+                }
+            }
+            
+        }
+
+        if(playerTeam.equals("b") && teamDR2.equals("b") && !added){
+
+            for (int i = 0; i < ROWS_DR2; i++) {
+                for (int j = 1; j < COLS_DR2; j = j + 2) {
+                    if (dressRoom2[i][j] == null) {
+                        dressRoom2[i][j] = player;
+                        added = true;
+                        
+                    }
+                }
+            }
+            
+        }
+
+        if(added){
+            message = " Jugador asignado  ";
+        }
+
         return message;
     }
 
@@ -171,9 +282,9 @@ public class SoccerClub {
 
         for (int i = 0; i < ROWS_OFICES; i++) {
             for (int j = 0; j < COLS_OFFICES; j++) {
-                if ( offices[i][j] != null &&  offices[i][j].getId() == id) {
+                if (offices[i][j] != null && offices[i][j].getId() == id) {
                     int posY = i + 1;
-                    int posX = j +1;
+                    int posX = j + 1;
                     message = "Oficina: " + posY + " - " + posX;
                 }
             }
@@ -197,7 +308,7 @@ public class SoccerClub {
 
         if (coach != null) {
             for (int i = 0; i < ROWS_OFICES; i++) {
-                
+
                 if (i % 2 == 0 && !added) {
                     for (int j = 0; j < COLS_OFFICES; j = j + 2) {
                         if (offices[i][j] == null) {

@@ -82,6 +82,14 @@ public class Menu {
     }
 
     /// -----------------------------------------------------
+    public String addPlayerToDressroom(){
+        
+        System.out.println("Ingresa el id");
+        int id = Integer.parseInt(sc.nextLine());
+
+        return soccerClub.addPlayerToDressRoom(id);
+
+    }
 
     public String addCoachToOffice(){
         
@@ -669,7 +677,7 @@ public class Menu {
                 break;
 
             case ADD_PLAYER_DRESSROOM:
-                System.out.println("Pendiente 9");
+                System.out.println(addPlayerToDressroom());
                 break;
 
             case ADD_COACH_OFFICE:
