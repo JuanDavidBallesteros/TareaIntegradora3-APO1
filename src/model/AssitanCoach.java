@@ -29,6 +29,7 @@ public class AssitanCoach extends Coach {
         message += "** Años de experiecia: " + getExperienceYears() + "\n";
         message += "** Especialidad: " + getExpertise()  + "\n";
         message += "** Profesional del futbol: " + soccerProfessionalText()  + "\n";
+        message += "****** Estado: " + status() + "\n";
         message += "*****************************" + "\n";
         
         return message;

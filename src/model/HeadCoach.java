@@ -24,6 +24,9 @@ public class HeadCoach extends Coach implements SoccerWord {
         message += "** Años de experiencia: " + getExperienceYears() + "\n";
         message += "** Premios: " + getAchivedChampionships() + "\n";
         message += "** Equipos a cargo: " + getTeamsInCharge() + "\n";
+        message += "**** Valor en el mercado: " + calculateMarketPrice() + "\n";
+        message += "**** Estrellas: " + calculateStars() + "\n";
+        message += "****** Estado: " + status() + "\n";
         message += "*****************************" + "\n";
 
         return message;

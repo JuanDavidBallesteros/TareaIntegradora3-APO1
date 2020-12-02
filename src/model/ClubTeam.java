@@ -33,6 +33,19 @@ public class ClubTeam {
 
     // -------------------- Auxiliar Operations -------------------------
 
+    //Show lineUp
+    public String showLineUp(String lineUpDate, int typeNum){
+        String message = "Aliniación no encontrda";
+
+        for(int i = 0 ; i < lineUps.size() ; i++ ){
+            if(lineUps.get(i).getLineUpDate().equals(lineUpDate) && lineUps.get(i).getTypeNum() == typeNum){
+                message = lineUps.get(i).showInfo();
+            }
+        }
+
+        return message;
+    }
+
     // Add lineUp
     public String addLienUp(String lineUpDate, String lineUpNum, int typeNum) {
         String message = "";
@@ -40,10 +53,10 @@ public class ClubTeam {
 
         LineUp lineUp = new LineUp(lineUpDate, lineUpNum, typeNum);
 
-        for (int i = 0; i < players.size(); i++) {
+        for (int i = 0; i < lineUps.size(); i++) {
             if (lineUps.get(i).getLineUpNum().equals(lineUpNum) && lineUps.get(i).getTypeNum() == typeNum) {
                 add = false;
-                message = "No se pudo asisgnar el jugador";
+                message = "No se pudo asisgnar la aliniación";
             }
         }
         if (add) {

@@ -3,6 +3,8 @@ package model;
 
 import java.util.ArrayList;
 
+//import sun.tools.tree.AssignShiftLeftExpression;
+
 public class SoccerClub {
 
     private static final int TEAMS_SIZE = 2;
@@ -57,17 +59,59 @@ public class SoccerClub {
 
         dressRoom1 = new Player[ROWS_DR1][COLS_DR1];
         dressRoom2 = new Player[ROWS_DR2][COLS_DR2];
+
+        HeadCoach testCoach1 = new HeadCoach("Carter", 111, 3452, 6, 5, 1);
+        HeadCoach testCoach2 = new HeadCoach("Guardiola", 222, 3452, 6, 5, 1);
+        HeadCoach testCoach3 = new HeadCoach("Matu", 333, 3452, 6, 5, 1);
+
+        AssitanCoach testAssitan = new AssitanCoach("Pedro", 555, 2432, 4, "si", 2);
+
+        Player testPlayer1 = new Player("Messi", 11, 3341, 10, 100, 4, 3);
+        Player testPlayer2 = new Player("Cris", 12, 3341, 10, 100, 4, 2);
+        Player testPlayer3 = new Player("Duban", 13, 3341, 10, 100, 4, 3);
+        Player testPlayer4 = new Player("Falcao", 14, 3341, 9, 100, 4, 2);
+        Player testPlayer5 = new Player("james", 15, 3341, 10, 100, 4, 0);
+        Player testPlayer6 = new Player("Pele", 16, 3341, 10, 100, 4, 1);
+
+        Player testPlayer7 = new Player("David", 17, 3341, 10, 100, 4, 0);
+        Player testPlayer8 = new Player("Cuadrado", 18, 3341, 10, 100, 4, 1);
+
+        employees.add(testCoach1);
+        employees.add(testCoach2);
+        employees.add(testCoach3);
+
+        employees.add(testAssitan);
+
+        employees.add(testPlayer1);
+        employees.add(testPlayer2);
+        employees.add(testPlayer3);
+        employees.add(testPlayer4);
+        employees.add(testPlayer5);
+        employees.add(testPlayer6);
+        employees.add(testPlayer7);
+        employees.add(testPlayer8);
+
+        clubTeams[0].addLienUp("02/12/2020", "4-4-3", 2);
+
+        clubTeams[0].addPlayerToTeam(testPlayer1);
+        clubTeams[0].addPlayerToTeam(testPlayer2);
+        clubTeams[0].addPlayerToTeam(testPlayer3);
+        clubTeams[0].addPlayerToTeam(testPlayer4);
+        clubTeams[0].addPlayerToTeam(testPlayer5);
+        clubTeams[0].addPlayerToTeam(testPlayer6);
+        clubTeams[0].addPlayerToTeam(testPlayer7);
+        clubTeams[0].addPlayerToTeam(testPlayer8);
     }
 
     // test method
     public SoccerClub() {
-        clubName = "Fosfotos";
+        clubName = "Example Club";
         nit = 1234;
         foundationDate = "12/08/1967";
 
         clubTeams = new ClubTeam[TEAMS_SIZE];
-        clubTeams[0] = new ClubTeam("Zucaritas");
-        clubTeams[1] = new ClubTeam("Chocapics");
+        clubTeams[0] = new ClubTeam("Example Team 1");
+        clubTeams[1] = new ClubTeam("Example Team 2");
 
         offices = new Coach[ROWS_OFICES][COLS_OFFICES];
 
@@ -82,9 +126,12 @@ public class SoccerClub {
 
         AssitanCoach testAssitan = new AssitanCoach("Pedro", 555, 2432, 4, "si", 2);
 
-        Player testPlayer1 = new Player("Messi", 777, 3341, 10, 100, 4, 3);
-        Player testPlayer2 = new Player("Cris", 888, 3341, 10, 100, 4, 2);
-        Player testPlayer3 = new Player("Duban", 999, 3341, 10, 100, 4, 1);
+        Player testPlayer1 = new Player("Messi", 11, 3341, 10, 100, 4, 3);
+        Player testPlayer2 = new Player("Cris", 12, 3341, 10, 100, 4, 2);
+        Player testPlayer3 = new Player("Duban", 13, 3341, 10, 100, 4, 1);
+        Player testPlayer4 = new Player("Falcao", 14, 3341, 10, 100, 4, 1);
+        Player testPlayer5 = new Player("james", 15, 3341, 10, 100, 4, 1);
+        Player testPlayer6 = new Player("Pele", 16, 3341, 10, 100, 4, 1);
 
         employees.add(testCoach1);
         employees.add(testCoach2);
@@ -95,12 +142,18 @@ public class SoccerClub {
         employees.add(testPlayer1);
         employees.add(testPlayer2);
         employees.add(testPlayer3);
+        employees.add(testPlayer4);
+        employees.add(testPlayer5);
+        employees.add(testPlayer6);
 
         clubTeams[0].addLienUp("02/12/2020", "4-4-3", 2);
 
         clubTeams[0].addPlayerToTeam(testPlayer1);
-        clubTeams[1].addPlayerToTeam(testPlayer2);
+        clubTeams[0].addPlayerToTeam(testPlayer2);
         clubTeams[0].addPlayerToTeam(testPlayer3);
+        clubTeams[1].addPlayerToTeam(testPlayer4);
+        clubTeams[1].addPlayerToTeam(testPlayer5);
+        clubTeams[1].addPlayerToTeam(testPlayer6);
     }
 
     // -------------------- Menu Operations -------------------------
@@ -108,6 +161,10 @@ public class SoccerClub {
     // option 11
     public String playerDressRoom(int id) {
         String message = "No se pudo encontrar";
+
+        boolean inDR1 = false;
+        boolean inDR2 = false;
+
         boolean finded = false;
 
         for (int i = 0; i < ROWS_DR1; i++) {
@@ -116,6 +173,7 @@ public class SoccerClub {
                     int posY = i + 1;
                     int posX = j + 1;
                     message = "Camerino 1, lugar: " + posY + "-" + posX;
+                    inDR1 = true;
                 }
             }
         }
@@ -126,10 +184,67 @@ public class SoccerClub {
                     int posY = i + 1;
                     int posX = j + 1;
                     message = "Camerino 2, lugar: " + posY + "-" + posX;
+                    inDR2 = true;
                 }
             }
         }
 
+        if (inDR1) {
+            message += "\n";
+            message += dr1Img();
+        }
+
+        if (inDR2) {
+            message += "\n";
+            message += dr2Img();
+        }
+
+        return message;
+    }
+
+    private String dr1Img() {
+        String message = "";
+        String[][] matriz = new String[ROWS_DR1][COLS_DR1];
+
+        for (int i = 0; i < ROWS_DR1; i++) {
+            for (int j = 0; j < COLS_DR1; j++) {
+                if (dressRoom1[i][j] != null) {
+                    matriz[i][j] = " [" + dressRoom1[i][j].getEmployeeName() + "] ";
+                } else {
+                    matriz[i][j] = " [Vacio] ";
+                }
+            }
+        }
+
+        for (int i = 0; i < ROWS_DR1; i++) {
+            for (int j = 0; j < COLS_DR1; j++) {
+                message += matriz[i][j];
+            }
+            message += "\n";
+        }
+        return message;
+    }
+
+    private String dr2Img() {
+        String message = "";
+        String[][] matriz = new String[ROWS_DR2][COLS_DR2];
+
+        for (int i = 0; i < ROWS_DR2; i++) {
+            for (int j = 0; j < COLS_DR2; j++) {
+                if (dressRoom2[i][j] != null) {
+                    matriz[i][j] = " [" + dressRoom2[i][j].getEmployeeName() + "] ";
+                } else {
+                    matriz[i][j] = " [Vacio] ";
+                }
+            }
+        }
+
+        for (int i = 0; i < ROWS_DR2; i++) {
+            for (int j = 0; j < COLS_DR2; j++) {
+                message += matriz[i][j];
+            }
+            message += "\n";
+        }
         return message;
     }
 
@@ -159,6 +274,9 @@ public class SoccerClub {
                 }
             }
         }
+
+       
+
         // dressroom 2 es empty
         for (int i = 0; i < ROWS_DR2; i++) {
             for (int j = 0; j < COLS_DR2; j++) {
@@ -167,6 +285,9 @@ public class SoccerClub {
                 }
             }
         }
+
+        
+
         // get the player by id
         for (int i = 0; i < employees.size(); i++) {
             if (id == employees.get(i).getId() && employees.get(i) instanceof Player) {
@@ -175,33 +296,35 @@ public class SoccerClub {
         }
 
         // assing player team
-
-        for (int k = 0; k < clubTeams[0].getPlayers().size(); k++) {
-            if (clubTeams[0].getPlayers().get(k) != null && player.equals(clubTeams[0].getPlayers().get(k))) {
-                playerTeam = "a";
+        if (player != null) {
+            for (int k = 0; k < clubTeams[0].getPlayers().size(); k++) {
+                if (clubTeams[0].getPlayers().get(k) != null && player.equals(clubTeams[0].getPlayers().get(k))) {
+                    playerTeam = "a";
+                }
+            }
+            for (int k = 0; k < clubTeams[1].getPlayers().size(); k++) {
+                if (clubTeams[1].getPlayers().get(k) != null && player.equals(clubTeams[1].getPlayers().get(k))) {
+                    playerTeam = "b";
+                }
             }
         }
-        for (int k = 0; k < clubTeams[1].getPlayers().size(); k++) {
-            if (clubTeams[1].getPlayers().get(k) != null && player.equals(clubTeams[1].getPlayers().get(k))) {
-                playerTeam = "b";
-            }
-        }
 
+        
 
         // both dessrooms empnty
         if (playerTeam != null) {
             if (emptyDR1 && emptyDR2) {
                 for (int i = 0; i < ROWS_DR1; i++) {
 
-                    if (i % 2 == 0 && !added) {
+                    if (i % 2 == 0) {
                         for (int j = 0; j < COLS_DR2; j = j + 2) {
-                            if (dressRoom1[i][j] == null) {
+                            if (dressRoom1[i][j] == null && !added) {
                                 dressRoom1[i][j] = player;
                                 added = true;
-                               
+
                             }
                         }
-                    } 
+                    }
                 }
             }
 
@@ -209,19 +332,22 @@ public class SoccerClub {
             if (!emptyDR1) {
 
                 for (int i = 0; i < ROWS_DR1; i++) {
-                    for (int j = 1; j < COLS_DR1; j++) {
+
+                    for (int j = 0; j < COLS_DR1; j++) {
 
                         if (dressRoom1[i][j] != null && !asignedLetterTeam) {
 
                             for (int k = 0; k < clubTeams[0].getPlayers().size(); k++) {
-                                if ( clubTeams[0].getPlayers().get(k) != null &&  dressRoom1[i][j].equals(clubTeams[0].getPlayers().get(k))) {
+                                if (clubTeams[0].getPlayers().get(k) != null
+                                        && dressRoom1[i][j].equals(clubTeams[0].getPlayers().get(k))) {
                                     teamDR1 = "a";
                                     teamDR2 = "b";
                                     asignedLetterTeam = true;
                                 }
                             }
                             for (int k = 0; k < clubTeams[1].getPlayers().size(); k++) {
-                                if (clubTeams[1].getPlayers().get(k) != null &&  dressRoom1[i][j].equals(clubTeams[1].getPlayers().get(k))) {
+                                if (clubTeams[1].getPlayers().get(k) != null
+                                        && dressRoom1[i][j].equals(clubTeams[1].getPlayers().get(k))) {
                                     teamDR1 = "b";
                                     teamDR2 = "a";
                                 }
@@ -233,62 +359,95 @@ public class SoccerClub {
 
             // asing dressroom player
 
-            if (playerTeam.equals("a") && teamDR1.equals("a") && !added) {
+            if (playerTeam.equals("a") && teamDR1.equals("a")) {
 
                 for (int i = 0; i < ROWS_DR1; i++) {
-                    for (int j = 1; j < COLS_DR1; j = j + 2) {
-                        if (dressRoom1[i][j] == null) {
-                            dressRoom1[i][j] = player;
-                            added = true;
-
+                    if (i % 2 == 0) {
+                        for (int j = 0; j < COLS_DR1; j = j + 2) {
+                            if (dressRoom1[i][j] == null && !added) {
+                                dressRoom1[i][j] = player;
+                                added = true;
+                            }
+                        }
+                    }
+                    if (i % 2 != 0) {
+                        for (int j = 1; j < COLS_DR1; j = j + 2) {
+                            if (dressRoom1[i][j] == null && !added) {
+                                dressRoom1[i][j] = player;
+                                added = true;
+                            }
                         }
                     }
                 }
-
             }
 
-            if (playerTeam.equals("a") && teamDR2.equals("a") && !added) {
-
+            if (playerTeam.equals("a") && teamDR2.equals("a")) {
                 for (int i = 0; i < ROWS_DR2; i++) {
-                    for (int j = 1; j < COLS_DR2; j = j + 2) {
-                        if (dressRoom2[i][j] == null) {
-                            dressRoom2[i][j] = player;
-                            added = true;
-
+                    if (i % 2 == 0) {
+                        for (int j = 0; j < COLS_DR2; j = j + 2) {
+                            if (dressRoom2[i][j] == null && !added) {
+                                dressRoom2[i][j] = player;
+                                added = true;
+                            }
+                        }
+                    }
+                    if (i % 2 != 0) {
+                        for (int j = 1; j < COLS_DR2; j = j + 2) {
+                            if (dressRoom2[i][j] == null && !added) {
+                                dressRoom2[i][j] = player;
+                                added = true;
+                            }
                         }
                     }
                 }
-
             }
 
-            if (playerTeam.equals("b") && teamDR1.equals("b") && !added) {
+            if (playerTeam.equals("b") && teamDR1.equals("b")) {
 
                 for (int i = 0; i < ROWS_DR1; i++) {
-                    for (int j = 1; j < COLS_DR1; j = j + 2) {
-                        if (dressRoom1[i][j] == null) {
-                            dressRoom1[i][j] = player;
-                            added = true;
-
+                    if (i % 2 == 0) {
+                        for (int j = 0; j < COLS_DR1; j = j + 2) {
+                            if (dressRoom1[i][j] == null && !added) {
+                                dressRoom1[i][j] = player;
+                                added = true;
+                            }
+                        }
+                    }
+                    if (i % 2 != 0) {
+                        for (int j = 1; j < COLS_DR1; j = j + 2) {
+                            if (dressRoom1[i][j] == null && !added) {
+                                dressRoom1[i][j] = player;
+                                added = true;
+                            }
                         }
                     }
                 }
-
             }
 
-            if (playerTeam.equals("b") && teamDR2.equals("b") && !added) {
+            if (playerTeam.equals("b") && teamDR2.equals("b")) {
 
                 for (int i = 0; i < ROWS_DR2; i++) {
-                    for (int j = 1; j < COLS_DR2; j = j + 2) {
-                        if (dressRoom2[i][j] == null) {
-                            dressRoom2[i][j] = player;
-                            added = true;
-
+                    if (i % 2 == 0) {
+                        for (int j = 0; j < COLS_DR2; j = j + 2) {
+                            if (dressRoom2[i][j] == null && !added) {
+                                dressRoom2[i][j] = player;
+                                added = true;
+                            }
+                        }
+                    }
+                    if (i % 2 != 0) {
+                        for (int j = 1; j < COLS_DR2; j = j + 2) {
+                            if (dressRoom2[i][j] == null && !added) {
+                                dressRoom2[i][j] = player;
+                                added = true;
+                            }
                         }
                     }
                 }
 
             }
         }
+
         if (added) {
             message = " Jugador asignado  ";
         }
@@ -310,8 +469,34 @@ public class SoccerClub {
             }
         }
 
-        return message;
+        message += "\n";
+        message += coachOfficeImg();
 
+        return message;
+    }
+
+    private String coachOfficeImg() {
+        String message = "";
+        String[][] matriz = new String[ROWS_OFICES][COLS_OFFICES];
+
+        for (int i = 0; i < ROWS_OFICES; i++) {
+            for (int j = 0; j < COLS_OFFICES; j++) {
+                if (offices[i][j] != null) {
+                    matriz[i][j] = " [" + offices[i][j].getEmployeeName() + "] ";
+                } else {
+                    matriz[i][j] = " [Vacio] ";
+                }
+            }
+        }
+
+        for (int i = 0; i < ROWS_OFICES; i++) {
+            for (int j = 0; j < COLS_OFFICES; j++) {
+                message += matriz[i][j];
+            }
+            message += "\n";
+        }
+
+        return message;
     }
 
     // option 10
@@ -329,18 +514,18 @@ public class SoccerClub {
         if (coach != null) {
             for (int i = 0; i < ROWS_OFICES; i++) {
 
-                if (i % 2 == 0 && !added) {
+                if (i % 2 == 0) {
                     for (int j = 0; j < COLS_OFFICES; j = j + 2) {
-                        if (offices[i][j] == null) {
+                        if (offices[i][j] == null && !added) {
                             offices[i][j] = coach;
                             added = true;
                             message = "Entrenador asignado ";
                         }
                     }
                 }
-                if (i % 2 != 0 && !added) {
+                if (i % 2 != 0) {
                     for (int j = 1; j < COLS_OFFICES; j = j + 2) {
-                        if (offices[i][j] == null) {
+                        if (offices[i][j] == null && !added) {
                             offices[i][j] = coach;
                             added = true;
                             message = " Entrenador asignado  ";
@@ -355,15 +540,15 @@ public class SoccerClub {
 
     // Option 8
 
-    public String showLineUps(String letter) {
+    public String showLineUp(String letter, String lineUpDate, int typeNum) {
         String message = "";
 
         if (letter.equals("A") || letter.equals("a")) {
-            message = clubTeams[0].showLineUps();
+            message = clubTeams[0].showLineUp(lineUpDate, typeNum);
         }
 
         if (letter.equals("B") || letter.equals("b")) {
-            message = clubTeams[1].showLineUps();
+            message = clubTeams[1].showLineUp(lineUpDate, typeNum);
         }
 
         return message;
@@ -557,16 +742,19 @@ public class SoccerClub {
         if (letter.equals("A") || letter.equals("a")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i) instanceof Player && employees.get(i).getId() == id) {
+                    employees.get(i).setActive(false);
                     message = answer;
                     Player player = (Player) employees.get(i);
                     clubTeams[0].getPlayers().remove(player);
                 }
                 if (employees.get(i) instanceof AssitanCoach && employees.get(i).getId() == id) {
+                    employees.get(i).setActive(false);
                     message = answer;
                     AssitanCoach assitant = (AssitanCoach) employees.get(i);
                     clubTeams[0].getAssitants().remove(assitant);
                 }
                 if (employees.get(i) instanceof Coach && employees.get(i).getId() == id) {
+                    employees.get(i).setActive(false);
                     message = answer;
                     clubTeams[0].setCoach(null);
                 }
@@ -576,16 +764,19 @@ public class SoccerClub {
         if (letter.equals("B") || letter.equals("b")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i) instanceof Player && employees.get(i).getId() == id) {
+                    employees.get(i).setActive(false);
                     message = answer;
                     Player player = (Player) employees.get(i);
                     clubTeams[1].getPlayers().remove(player);
                 }
                 if (employees.get(i) instanceof AssitanCoach && employees.get(i).getId() == id) {
+                    employees.get(i).setActive(false);
                     message = answer;
                     AssitanCoach assitant = (AssitanCoach) employees.get(i);
                     clubTeams[1].getAssitants().remove(assitant);
                 }
                 if (employees.get(i) instanceof Coach && employees.get(i).getId() == id) {
+                    employees.get(i).setActive(false);
                     message = answer;
                     clubTeams[1].setCoach(null);
                 }
@@ -603,6 +794,7 @@ public class SoccerClub {
         if (letter.equals("A") || letter.equals("a")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (id == employees.get(i).getId() && employees.get(i) instanceof HeadCoach) {
+                    employees.get(i).setActive(true);
                     coach = (HeadCoach) employees.get(i);
                     message = clubTeams[0].setCoach(coach);
                 }
@@ -612,6 +804,7 @@ public class SoccerClub {
         if (letter.equals("B") || letter.equals("b")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (id == employees.get(i).getId() && employees.get(i) instanceof HeadCoach) {
+                    employees.get(i).setActive(true);
                     coach = (HeadCoach) employees.get(i);
                     message = clubTeams[1].setCoach(coach);
                 }
@@ -629,6 +822,7 @@ public class SoccerClub {
         if (letter.equals("A") || letter.equals("a")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (id == employees.get(i).getId() && employees.get(i) instanceof AssitanCoach) {
+                    employees.get(i).setActive(true);
                     assistan = (AssitanCoach) employees.get(i);
                     message = clubTeams[0].addAssitantToTeam(assistan);
                 }
@@ -638,6 +832,7 @@ public class SoccerClub {
         if (letter.equals("B") || letter.equals("b")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (id == employees.get(i).getId() && employees.get(i) instanceof AssitanCoach) {
+                    employees.get(i).setActive(true);
                     assistan = (AssitanCoach) employees.get(i);
                     message = clubTeams[1].addAssitantToTeam(assistan);
                 }
@@ -656,6 +851,7 @@ public class SoccerClub {
         if (letter.equals("A") || letter.equals("a")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                    employees.get(i).setActive(true);
                     player = (Player) employees.get(i);
                     message = clubTeams[0].addPlayerToTeam(player);
                 }
@@ -665,6 +861,7 @@ public class SoccerClub {
         if (letter.equals("B") || letter.equals("b")) {
             for (int i = 0; i < employees.size(); i++) {
                 if (id == employees.get(i).getId() && employees.get(i) instanceof Player) {
+                    employees.get(i).setActive(true);
                     player = (Player) employees.get(i);
                     message = clubTeams[1].addPlayerToTeam(player);
                 }

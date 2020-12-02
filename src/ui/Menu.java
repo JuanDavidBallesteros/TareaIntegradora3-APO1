@@ -31,8 +31,8 @@ public class Menu {
      * <b>post:</b> Soccer Club
      */
     public Menu() {
-        // this.soccerClub = readInitialData();
-        soccerClub = new SoccerClub();
+        this.soccerClub = readInitialData();
+        //soccerClub = new SoccerClub();
     }
 
     /**
@@ -42,6 +42,7 @@ public class Menu {
      * <b>post:</b> Soccer Club
      */
     public SoccerClub readInitialData() {
+        System.out.println("");
         System.out.println("Escribe el nombre del club");
         String clubName = (sc.nextLine());
 
@@ -70,10 +71,10 @@ public class Menu {
         System.out.println("(5) Para mostrar la información de un empleado o equipo "); // Done
         System.out.println("(6) Para editar la información de un empleado o equipo "); // Done
         System.out.println("(7) Para añadir una alineación de equipo "); // Done
-        System.out.println("(8) Para mostrar las alineaciniaciones de un equipo "); // Done
-        System.out.println("(9) Para añadir un jugador a camerino "); 
+        System.out.println("(8) Para mostrar un alineaciniación de un equipo "); // Done
+        System.out.println("(9) Para añadir un jugador a camerino "); //Done
         System.out.println("(10) Para añadir a un entrenador a las oficinas "); // Done
-        System.out.println("(11) Para mostrar la ubicación del jugador ");
+        System.out.println("(11) Para mostrar la ubicación del jugador "); //Done
         System.out.println("(12) Para mostrar la ubicación del entrenador "); // Done
         System.out.println("(13) Para mostrar la información general del club "); // Done
         System.out.println("(14) Para salir "); // Done
@@ -124,7 +125,27 @@ public class Menu {
         System.out.println("Selecciona el club club (A - B) ");
         String letter = (sc.nextLine());
 
-        return soccerClub.showLineUps(letter);
+        System.out.println("Ingresa la fecha de creación (dd/mm/aaaa) ");
+        String lineUpDate = (sc.nextLine());
+
+        System.out.println("Selecciona el tipo de la formación ");
+        int typeNum = 0;
+
+        do {
+            System.out.println("");
+
+            System.out.println("(1) Pocesión ");
+            System.out.println("(2) Contrataque ");
+            System.out.println("(3) Presión ");
+            System.out.println("(4) Defecto ");
+
+            typeNum = Integer.parseInt(sc.nextLine());
+
+        } while (typeNum > 4 || typeNum < 1);
+
+        typeNum = typeNum - 1;
+
+        return soccerClub.showLineUp(letter, lineUpDate, typeNum);
 
     }
 
@@ -137,7 +158,7 @@ public class Menu {
         System.out.println("Ingresa la formación (4-4-3) ");
         String lineUpNum = (sc.nextLine());
 
-        System.out.println("Ingresa la fecha ");
+        System.out.println("Ingresa la fecha (dd/mm/aaaa)  ");
         String lineUpDate = (sc.nextLine());
 
         System.out.println("Ingresa el tipo ");
@@ -385,10 +406,10 @@ public class Menu {
 
         String message = "";
 
-        System.out.println("Categoria del club (A - B) ");
+        System.out.println("Selecciona el club del cual retirar al empleado (A - B) ");
         String letter = (sc.nextLine());
 
-        System.out.println("Id del entrenador ");
+        System.out.println("Id del empleado ");
         int id = Integer.parseInt(sc.nextLine());
 
         message = soccerClub.takeOutFromTeam(letter, id);

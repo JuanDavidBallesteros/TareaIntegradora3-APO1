@@ -30,6 +30,9 @@ public class Player extends Employee implements SoccerWord {
         message += "** Goles: " + getScoredGoals()  + "\n";
         message += "** Promedio: " + averageMark  + "\n";
         message += "** Posición: " + getRole()  + "\n";
+        message += "**** Valor en el mercado: " + calculateMarketPrice() + "\n";
+        message += "**** Estrellas: " + calculateStars() + "\n";
+        message += "****** Estado: " + status() + "\n";
         message += "*****************************" + "\n";
 
 

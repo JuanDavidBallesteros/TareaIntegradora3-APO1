@@ -1,10 +1,13 @@
 package model;
 
+//import jdk.javadoc.internal.tool.Start;
+
 public abstract class Employee {
 
     private String employeeName;
     private int id;
     private double salary;
+    private boolean isActive;
 
     // show info abstrac
     /**
@@ -18,6 +21,19 @@ public abstract class Employee {
         this.employeeName = employeeName;
         this.id = id;
         this.salary = salary;
+        isActive = false;
+    }
+
+    public String status(){
+        String status ="";
+
+        if(isActive){
+            status = "Activo ";
+        } else {
+            status = "Inactivo";
+        }
+
+        return status;
     }
 
     public String getEmployeeName() {
@@ -42,6 +58,14 @@ public abstract class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     
