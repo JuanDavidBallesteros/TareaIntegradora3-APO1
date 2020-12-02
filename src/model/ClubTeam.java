@@ -60,7 +60,7 @@ public class ClubTeam {
         boolean add = true;
 
         for (int i = 0; i < players.size(); i++) {
-            if (player.equals(players.get(i)) || players.size() < PLAYERS_SIZE) {
+            if (player.getId() == players.get(i).getId() || players.size() > PLAYERS_SIZE) {
                 add = false;
                 message = "No se pudo asisgnar el jugador";
             }
@@ -79,7 +79,7 @@ public class ClubTeam {
         boolean add = true;
 
         for (int i = 0; i < assitants.size(); i++) {
-            if (assitanCoach.equals(assitants.get(i)) || assitants.size() < ASSITANTS_SIZE) {
+            if (assitanCoach.equals(assitants.get(i)) || assitants.size() > ASSITANTS_SIZE) {
                 add = false;
                 message = "No se pudo asisgnar el asistente";
             }
@@ -96,22 +96,22 @@ public class ClubTeam {
     public String showTeamInfo() {
         String message = "******** Información Equipo ********" + "\n";
 
-        message += "** Nombre del equipo: " + getTeamName() + "\n";
+        message += "** Nombre del equipo: " + getTeamName() + "\n" + "\n";
         // message += "** Número de aliniaciones: " + lineUps.size() + "\n";
 
-        message += "----------- Team Coach " + "\n";
+        message += "----------- Team Coach " + "\n" + "\n";
         if (coach != null) {
             message += coach.showInfo() + "\n";
         } else {
             message += "**** Sin entrenador " + "\n";
         }
 
-        message += "----------- Team Asistants: " + assitants.size() + "\n";
+        message += "----------- Team Asistants: " + assitants.size() + "\n" + "\n";
         for (int i = 0; i < assitants.size(); i++) {
             message = message + assitants.get(i).showInfo() + "\n";
         }
 
-        message += "----------- Team Players: " + players.size() + "\n";
+        message += "----------- Team Players: " + players.size() + "\n" + "\n";
         for (int i = 0; i < players.size(); i++) {
             message = message + players.get(i).showInfo() + "\n";
         }

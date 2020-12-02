@@ -82,6 +82,16 @@ public class Menu {
     }
 
     /// -----------------------------------------------------
+
+    public String playerPlace(){
+        
+        System.out.println("Ingresa el id");
+        int id = Integer.parseInt(sc.nextLine());
+
+        return soccerClub.playerDressRoom(id);
+
+    }
+
     public String addPlayerToDressroom(){
         
         System.out.println("Ingresa el id");
@@ -685,7 +695,7 @@ public class Menu {
                 break;
 
             case UBICATION_PLAYER:
-                System.out.println("Pendiente 11");
+                System.out.println(playerPlace());
                 break;
 
             case UBICATION_COAHC:
