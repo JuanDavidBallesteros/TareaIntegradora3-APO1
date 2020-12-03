@@ -32,6 +32,11 @@ public class LineUp {
 
     // -------------------- Auxiliar Operations -------------------------
 
+    /**
+     * Text to image <br>
+     * <b>pre:</b> Create a image from the lineUpNum text image. LineUp object must be created <br>
+     * <b>post:</b> Text
+     */
     public int[][] createImage() {
 
         int[][] matrix = new int[ROWS][COLS];
@@ -62,6 +67,11 @@ public class LineUp {
         return matrix;
     }
 
+    /**
+     * MatrixImg <br>
+     * <b>pre:</b> Create the string image from matrix. LineUp object must be created <br>
+     * <b>post:</b> String
+     */
     private String matrixImg() {
 
         lineUp = createImage();
@@ -77,6 +87,11 @@ public class LineUp {
         return message;
     }
 
+    /**
+     * Image to text <br>
+     * <b>pre:</b> Create a text from the lineup image. LineUp object must be created <br>
+     * <b>post:</b> Text
+     */
     private String imgToText() {
         String message = "";
         lineUp = createImage();
@@ -95,13 +110,17 @@ public class LineUp {
                 message += count + "-";
             }
         }
-
-        if(message.length() > 1){
-        message = message.substring(0, message.length() - 1);
-    }
+        if (message.length() > 1) {
+            message = message.substring(0, message.length() - 1);
+        }
         return message;
     }
 
+    /**
+     * Show information <br>
+     * <b>pre:</b> Show LineUp information. LineUp object must be created <br>
+     * <b>post:</b> Description of the LineUp
+     */
     public String showInfo() {
         String message = "";
 
@@ -188,6 +207,11 @@ public class LineUp {
         return lineUp;
     }
 
+    /**
+     * Get typeNum <br>
+     * <b>pre:</b> Get typeNum to pass as parameter. LineUp must be created. <br>
+     * <b>post:</b> typeNum
+     */
     public int getTypeNum() {
         return typeNum;
     }

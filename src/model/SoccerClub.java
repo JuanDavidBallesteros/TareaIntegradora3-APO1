@@ -3,8 +3,6 @@ package model;
 
 import java.util.ArrayList;
 
-//import sun.tools.tree.AssignShiftLeftExpression;
-
 public class SoccerClub {
 
     private static final int TEAMS_SIZE = 2;
@@ -99,66 +97,20 @@ public class SoccerClub {
         clubTeams[0].addPlayerToTeam(testPlayer4);
         clubTeams[0].addPlayerToTeam(testPlayer5);
         clubTeams[0].addPlayerToTeam(testPlayer6);
-        clubTeams[0].addPlayerToTeam(testPlayer7);
-        clubTeams[0].addPlayerToTeam(testPlayer8);
+        clubTeams[1].addPlayerToTeam(testPlayer7);
+        clubTeams[1].addPlayerToTeam(testPlayer8);
     }
 
-    // test method
-    public SoccerClub() {
-        clubName = "Example Club";
-        nit = 1234;
-        foundationDate = "12/08/1967";
-
-        clubTeams = new ClubTeam[TEAMS_SIZE];
-        clubTeams[0] = new ClubTeam("Example Team 1");
-        clubTeams[1] = new ClubTeam("Example Team 2");
-
-        offices = new Coach[ROWS_OFICES][COLS_OFFICES];
-
-        dressRoom1 = new Player[ROWS_DR1][COLS_DR1];
-        dressRoom2 = new Player[ROWS_DR2][COLS_DR2];
-
-        employees = new ArrayList<>();
-
-        HeadCoach testCoach1 = new HeadCoach("Carter", 111, 3452, 6, 5, 1);
-        HeadCoach testCoach2 = new HeadCoach("Guardiola", 222, 3452, 6, 5, 1);
-        HeadCoach testCoach3 = new HeadCoach("Matu", 333, 3452, 6, 5, 1);
-
-        AssitanCoach testAssitan = new AssitanCoach("Pedro", 555, 2432, 4, "si", 2);
-
-        Player testPlayer1 = new Player("Messi", 11, 3341, 10, 100, 4, 3);
-        Player testPlayer2 = new Player("Cris", 12, 3341, 10, 100, 4, 2);
-        Player testPlayer3 = new Player("Duban", 13, 3341, 10, 100, 4, 1);
-        Player testPlayer4 = new Player("Falcao", 14, 3341, 10, 100, 4, 1);
-        Player testPlayer5 = new Player("james", 15, 3341, 10, 100, 4, 1);
-        Player testPlayer6 = new Player("Pele", 16, 3341, 10, 100, 4, 1);
-
-        employees.add(testCoach1);
-        employees.add(testCoach2);
-        employees.add(testCoach3);
-
-        employees.add(testAssitan);
-
-        employees.add(testPlayer1);
-        employees.add(testPlayer2);
-        employees.add(testPlayer3);
-        employees.add(testPlayer4);
-        employees.add(testPlayer5);
-        employees.add(testPlayer6);
-
-        clubTeams[0].addLienUp("02/12/2020", "4-4-3", 2);
-
-        clubTeams[0].addPlayerToTeam(testPlayer1);
-        clubTeams[0].addPlayerToTeam(testPlayer2);
-        clubTeams[0].addPlayerToTeam(testPlayer3);
-        clubTeams[1].addPlayerToTeam(testPlayer4);
-        clubTeams[1].addPlayerToTeam(testPlayer5);
-        clubTeams[1].addPlayerToTeam(testPlayer6);
-    }
-
+    
     // -------------------- Menu Operations -------------------------
 
     // option 11
+    /**
+     * playerDressRoom <br>
+     * <b>pre:</b> Get the coordenates an image of the player dressroom. Soccer club must be created. <br>
+     * <b>post:</b> Coordenates and matirx image
+     * @param id Identification number of the object. id != null
+     */
     public String playerDressRoom(int id) {
         String message = "No se pudo encontrar";
 
@@ -202,6 +154,11 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * dr1Img <br>
+     * <b>pre:</b> Generates the matrix image. Soccer club must be created. <br>
+     * <b>post:</b> matrix
+     */
     private String dr1Img() {
         String message = "";
         String[][] matriz = new String[ROWS_DR1][COLS_DR1];
@@ -225,6 +182,11 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * dr2Img <br>
+     * <b>pre:</b> Generates the matrix image. Soccer club must be created. <br>
+     * <b>post:</b> matrix
+     */
     private String dr2Img() {
         String message = "";
         String[][] matriz = new String[ROWS_DR2][COLS_DR2];
@@ -249,6 +211,12 @@ public class SoccerClub {
     }
 
     // option 9
+    /**
+     * addPlayerToDressRoom <br>
+     * <b>pre:</b> Add a player to a dressroom acording the requirements. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     */
     public String addPlayerToDressRoom(int id) {
         String message = "No se encontró el jugador";
 
@@ -456,6 +424,12 @@ public class SoccerClub {
     }
 
     // option 12
+    /**
+     * coachOffice <br>
+     * <b>pre:</b> Get the coordenates an image of the coach office. Soccer club must be created. <br>
+     * <b>post:</b> Coordenates and matirx image
+     * @param id Identification number of the object. id != null
+     */
     public String coachOffice(int id) {
         String message = "No se pudo encontrar";
 
@@ -475,6 +449,11 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * coachOfficeImg <br>
+     * <b>pre:</b> Generates the matrix image. Soccer club must be created. <br>
+     * <b>post:</b> Matrix
+     */
     private String coachOfficeImg() {
         String message = "";
         String[][] matriz = new String[ROWS_OFICES][COLS_OFFICES];
@@ -500,6 +479,12 @@ public class SoccerClub {
     }
 
     // option 10
+    /**
+     * addCoachToOffice <br>
+     * <b>pre:</b> Add a coach to the offices. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     */
     public String addCoachToOffice(int id) {
         String message = " No se pudo encontrar el entrenador";
         Coach coach = null;
@@ -539,7 +524,14 @@ public class SoccerClub {
     }
 
     // Option 8
-
+    /**
+     * showLineUp <br>
+     * <b>pre:</b> Show a specific lineUp. Soccer club must be created. <br>
+     * <b>post:</b> LineUp Information and imgage
+     * @param letter Team identification. letter != null
+     * @param lineUpDate Creation date. lineUpDate !=null
+     * @param typeNum    The enum position. typeNum !=null
+     */
     public String showLineUp(String letter, String lineUpDate, int typeNum) {
         String message = "";
 
@@ -555,7 +547,15 @@ public class SoccerClub {
     }
 
     // option 7
-
+    /**
+     * addLineUpToTeam <br>
+     * <b>pre:</b> Add a lineup to a team. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * @param letter Team identification. letter != null
+     * @param lineUpDate Creation date. lineUpDate !=null
+     * @param lineUpNum  The secuence of numbers. lineUpNum !=null
+     * @param typeNum    The enum position. typeNum !=null
+     */
     public String addLineUpToTeam(String letter, String lineUpDate, String lineUpNum, int typeNum) {
         String message = "No añadida";
 
@@ -573,6 +573,13 @@ public class SoccerClub {
     // option 6
 
     // Employee object
+    /**
+     * setEmployeeName <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param name New atribute value. name != null
+     */
     public String setEmployeeName(int id, String name) {
         String message = "No cambiado";
 
@@ -587,6 +594,13 @@ public class SoccerClub {
 
     }
 
+    /**
+     * setEmployeeId <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setEmployeeId(int id, int numb) {
         String message = "No cambiado";
 
@@ -600,6 +614,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * setEmployeeSalary <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setEmployeeSalary(int id, float numb) {
         String message = "No cambiado";
 
@@ -613,6 +634,13 @@ public class SoccerClub {
     }
 
     // Coach object
+    /**
+     * setCoachExperience <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setCoachExperience(int id, int numb) {
         String message = "No cambiado";
 
@@ -627,6 +655,13 @@ public class SoccerClub {
     }
 
     // Head coach object
+    /**
+     * setCoachChampionships <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setCoachChampionships(int id, int numb) {
         String message = "No cambiado";
 
@@ -640,6 +675,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * setCoachTeamsInCharge <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setCoachTeamsInCharge(int id, int numb) {
         String message = "No cambiado";
 
@@ -654,6 +696,13 @@ public class SoccerClub {
     }
 
     // Assistan coach object
+    /**
+     * setAssistanProfssional <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param text New atribute value. text != null
+     */
     public String setAssistanProfssional(int id, String text) {
         String message = "No cambiado";
 
@@ -667,6 +716,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * setAssistanExpertise <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setAssistanExpertise(int id, int numb) {
         String message = "No cambiado";
 
@@ -681,6 +737,13 @@ public class SoccerClub {
     }
 
     // Player Object
+    /**
+     * setPlayerShirtNumber <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setPlayerShirtNumber(int id, int numb) {
         String message = "No cambiado";
 
@@ -694,6 +757,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * setPalyerScoreGoals <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setPalyerScoreGoals(int id, int numb) {
         String message = "No cambiado";
 
@@ -707,6 +777,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * setPlayerAverageMark <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setPlayerAverageMark(int id, double numb) {
         String message = "No cambiado";
 
@@ -721,6 +798,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * setPlayerRole <br>
+     * <b>pre:</b> Chage an atribute to a selected object. Soccer club must be created. <br>
+     * <b>post:</b> Done or not done
+     * @param id Identification number of the object. id != null
+     * @param numb New atribute value. numb != null
+     */
     public String setPlayerRole(int id, int numb) {
         String message = "No cambiado";
 
@@ -735,6 +819,13 @@ public class SoccerClub {
     }
 
     // Options 1 to 5
+    /**
+     * takeOutFromTeam <br>
+     * <b>pre:</b> Elimitates an employee from a team. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * @param letter Team identification. letter != null
+     * @param id An atribute of the object. id != null
+     */
     public String takeOutFromTeam(String letter, int id) {
         String message = "No encontrado";
         String answer = "Empleado elimido del equipo";
@@ -787,6 +878,13 @@ public class SoccerClub {
     }
 
     // Add coach to team
+    /**
+     * addCoachToTeam <br>
+     * <b>pre:</b> Add an employee a team. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * @param letter Team identification. letter != null
+     * @param id An atribute of the object. id != null
+     */
     public String addCoachToTeam(String letter, int id) {
         String message = " No se pudo ajustar el entrenador";
         HeadCoach coach = null;
@@ -815,6 +913,13 @@ public class SoccerClub {
     }
     // Add assitant to team
 
+    /**
+     * addAssitantToTeam <br>
+     * <b>pre:</b> Add an employee a team. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * @param letter Team identification. letter != null
+     * @param id An atribute of the object. id != null
+     */
     public String addAssitantToTeam(String letter, int id) {
         String message = " No se pudo añadir el asistente";
         AssitanCoach assistan = null;
@@ -843,7 +948,13 @@ public class SoccerClub {
     }
 
     // Add player to team
-
+    /**
+     * addPlayertToTeam <br>
+     * <b>pre:</b> Add an employee a team. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * @param letter Team identification. letter != null
+     * @param id An atribute of the object. id != null
+     */
     public String addPlayertToTeam(String letter, int id) {
         String message = " No se pudo añadir el jugador";
         Player player = null;
@@ -872,6 +983,19 @@ public class SoccerClub {
     }
 
     // Player
+    /**
+     * addEmployee <br>
+     * <b>pre:</b> Creates an employee player to the club. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * 
+     * @param employeeName Creation date. lineUpDate !=null
+     * @param id  The identification number. id !=null
+     * @param salary    The wage. salary !=null
+     * @param shirtNumber    T-shirt number. shirtNumber !=null
+     * @param scoredGoals    Player's scored goals. scoredGoals !=null
+     * @param averageMark    Avergae mark. averageMark !=null
+     * @param roleNum    Number of the role enmun. roleNum !=null
+     */
     public String addEmployee(String employeeName, int id, double salary, int shirtNumber, int scoredGoals,
             double averageMark, int roleNum) {
 
@@ -893,6 +1017,18 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * addEmployee <br>
+     * <b>pre:</b> Creates an employee head coach to the club. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * 
+     * @param employeeName Creation date. lineUpDate !=null
+     * @param id  The identification number. id !=null
+     * @param salary    The wage. salary !=null
+     * @param experienceYears    Years of experience. experienceYears !=null
+     * @param achivedChampionships    Championsships won. achivedChampionships !=null
+     * @param teamsInCharge    Number of teams in charge. teamsInCharge !=null
+     */
     public String addEmployee(String employeeName, int id, double salary, int experienceYears, int achivedChampionships,
             int teamsInCharge) {
 
@@ -916,6 +1052,18 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * addEmployee <br>
+     * <b>pre:</b> Creates an employee assitan coach to the club. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * 
+     * @param employeeName Creation date. lineUpDate !=null
+     * @param id  The identification number. id !=null
+     * @param salary    The wage. salary !=null
+     * @param experienceYears    Years of experience. experienceYears !=null
+     * @param isProfessional    Yes or not it's sport professional. isProfessional !=null
+     * @param expertiseNum    Expertice. expertiseNum !=null
+     */
     public String addEmployee(String employeeName, int id, double salary, int experienceYears, String isProfessional,
             int expertiseNum) {
 
@@ -939,6 +1087,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * fireEmployeeInfo <br>
+     * <b>pre:</b> Eliminates an employee from the club. Soccer club must be created. <br>
+     * <b>post:</b> done or not done
+     * 
+     * @param id An atribute of the object. id != null
+     */
     public String fireEmployeeInfo(int id) {
 
         String message = "Empleado no encontrado";
@@ -953,6 +1108,11 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * showClubInfo <br>
+     * <b>pre:</b> Show all the club information. Soccer club must be created. <br>
+     * <b>post:</b> Club information
+     */
     public String showClubInfo() {
         String message = "*********** Información Club ***********" + "\n";
 
@@ -970,6 +1130,11 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * showEmployeesInfo <br>
+     * <b>pre:</b> Show all employees info. Soccer club must be created. <br>
+     * <b>post:</b> Employees information
+     */
     private String employeesInfo() {
         String message = "";
 
@@ -994,6 +1159,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * showTeamInfo <br>
+     * <b>pre:</b> Show team info by the letter. Soccer club must be created. <br>
+     * <b>post:</b> Team information
+     * 
+     * @param letter An clasification for the teams in the club. id != null
+     */
     public String showTeamInfo(String letter) {
         String message = "No encontrado";
 
@@ -1008,6 +1180,13 @@ public class SoccerClub {
         return message;
     }
 
+    /**
+     * showEmployeeInfo <br>
+     * <b>pre:</b> Show employee info by the id. Soccer club must be created. <br>
+     * <b>post:</b> Employee information
+     * 
+     * @param id An atribute of the object. id != null
+     */
     public String showEmployeeInfo(int id) {
 
         String message = "Empleado no encontrado";
@@ -1018,24 +1197,6 @@ public class SoccerClub {
             }
         }
 
-        return message;
-    }
-
-    // -------------------- Auxiliar Operations -------------------------
-
-    public String addTeam(String teamName) {
-        String message = "No añadido";
-        boolean add = false;
-
-        ClubTeam newteam = new ClubTeam(teamName);
-
-        for (int i = 0; i < TEAMS_SIZE; i++) {
-            if (!add && clubTeams[i] != null) {
-                clubTeams[i] = newteam;
-                add = true;
-                message = "Añadido";
-            }
-        }
         return message;
     }
 
