@@ -34,6 +34,14 @@ public class ClubTeam {
     // -------------------- Auxiliar Operations -------------------------
 
     //Show lineUp
+    // Show Info
+    /**
+     * Show lineup information <br>
+     * <b>pre:</b> Show lineup information. Club Team object must be created <br>
+     * <b>post:</b> Description of one lineup in the club team
+     * @param lineUpDate Date of creation. lineUpDate !=null
+     * @param typeNum The number lineup type in the app. typeNum !=null
+     */
     public String showLineUp(String lineUpDate, int typeNum){
         String message = "Aliniación no encontrda";
 
@@ -47,6 +55,14 @@ public class ClubTeam {
     }
 
     // Add lineUp
+    /**
+     * Add lineup <br>
+     * <b>pre:</b> Adds lineup to the team. Club Team object must be created <br>
+     * <b>post:</b> Lineup added
+     * @param lineUpDate Date of creation. lineUpDate !=null
+     * @param lineUpNum Formation numbers. lineUpNum !=null
+     * @param typeNum The number lineup type in the app. typeNum !=null
+     */
     public String addLienUp(String lineUpDate, String lineUpNum, int typeNum) {
         String message = "";
         boolean add = true;
@@ -68,6 +84,12 @@ public class ClubTeam {
     }
 
     // Add player
+    /**
+     * Add player <br>
+     * <b>pre:</b> Adds player to the team. Club Team object must be created <br>
+     * <b>post:</b> player added
+     * @param player Date of creation. player !=nulll
+     */
     public String addPlayerToTeam(Player player) {
         String message = "";
         boolean add = true;
@@ -87,6 +109,12 @@ public class ClubTeam {
     }
 
     // Add Assistant
+    /**
+     * Add assitanCoach <br>
+     * <b>pre:</b> Adds assitanCoach to the team. Club Team object must be created <br>
+     * <b>post:</b> assitanCoach added
+     * @param assitanCoach Date of creation. assitanCoach !=nulll
+     */
     public String addAssitantToTeam(AssitanCoach assitanCoach) {
         String message = "";
         boolean add = true;
@@ -106,11 +134,15 @@ public class ClubTeam {
     }
 
     // Show Info
+    /**
+     * Show information <br>
+     * <b>pre:</b> Show club temam information. Club Team object must be created <br>
+     * <b>post:</b> Description of the club team
+     */
     public String showTeamInfo() {
         String message = "******** Información Equipo ********" + "\n";
 
         message += "** Nombre del equipo: " + getTeamName() + "\n" + "\n";
-        // message += "** Número de aliniaciones: " + lineUps.size() + "\n";
 
         message += "----------- Team Coach " + "\n" + "\n";
         if (coach != null) {
@@ -137,6 +169,12 @@ public class ClubTeam {
         return message;
     }
 
+    // Show Info
+    /**
+     * Show lineups information <br>
+     * <b>pre:</b> Show lineups information. Club Team object must be created <br>
+     * <b>post:</b> Description of the lineups in the club team
+     */
     public String showLineUps() {
         String message = "No hay aliniaciones para mostrar";
 
@@ -147,7 +185,6 @@ public class ClubTeam {
                 message = message + lineUps.get(i).showInfo() + "\n";
             }
         }
-
         return message;
     }
 
@@ -182,18 +219,40 @@ public class ClubTeam {
         return lineUps;
     }
 
+    /**
+     * Get players <br>
+     * <b>pre:</b> Get players to pass as parameter. Team must be created. <br>
+     * <b>post:</b> players
+     */
     public ArrayList<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * Get assitants <br>
+     * <b>pre:</b> Get assitants to pass as parameter. Team must be created. <br>
+     * <b>post:</b> assitants
+     */
     public ArrayList<AssitanCoach> getAssitants() {
         return assitants;
     }
 
+    /**
+     * Get coach <br>
+     * <b>pre:</b> Get coach to pass as parameter. Team must be created. <br>
+     * <b>post:</b> coach
+     */
     public HeadCoach getCoach() {
         return coach;
     }
 
+    /**
+     * Set coach <br>
+     * <b>pre:</b> Set the coach. Team must be created. <br>
+     * <b>post:</b> Atribute updated
+     * 
+     * @param coach coach object. coach != null
+     */
     public String setCoach(HeadCoach coach) {
         String message = "Entrenador cambiado";
         this.coach = coach;

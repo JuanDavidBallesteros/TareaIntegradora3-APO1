@@ -1,7 +1,5 @@
 package model;
 
-//import jdk.javadoc.internal.tool.Start;
-
 public abstract class Employee {
 
     private String employeeName;
@@ -17,6 +15,16 @@ public abstract class Employee {
      */
     public abstract String showInfo();
 
+
+    /**
+     * Cosntructor Coach <br>
+     * <b>pre:</b> Create an coach object. <br>
+     * <b>post:</b> Coach created
+     * 
+     * @param employeeName Creation date. lineUpDate !=null
+     * @param id  The identification number. id !=null
+     * @param salary    The wage. salary !=null
+     */
     public Employee(String employeeName, int id, double salary) {
         this.employeeName = employeeName;
         this.id = id;
