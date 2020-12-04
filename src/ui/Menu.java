@@ -32,7 +32,7 @@ public class Menu {
      */
     public Menu() {
         this.soccerClub = readInitialData();
-        
+
     }
 
     /**
@@ -72,9 +72,9 @@ public class Menu {
         System.out.println("(6) Para editar la información de un empleado o equipo "); // Done
         System.out.println("(7) Para añadir una alineación de equipo "); // Done
         System.out.println("(8) Para mostrar un alineaciniación de un equipo "); // Done
-        System.out.println("(9) Para añadir un jugador a camerino "); //Done
+        System.out.println("(9) Para añadir un jugador a camerino "); // Done
         System.out.println("(10) Para añadir a un entrenador a las oficinas "); // Done
-        System.out.println("(11) Para mostrar la ubicación del jugador "); //Done
+        System.out.println("(11) Para mostrar la ubicación del jugador "); // Done
         System.out.println("(12) Para mostrar la ubicación del entrenador "); // Done
         System.out.println("(13) Para mostrar la información general del club "); // Done
         System.out.println("(14) Para salir "); // Done
@@ -86,12 +86,12 @@ public class Menu {
 
     /**
      * Player place <br>
-     * <b>pre:</b> Find the player dressroom ubication. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Find the player dressroom ubication. Main object must be
+     * initialized and all methos must be created<br>
      * <b>post:</b> Image and coordenates
      */
-    public String playerPlace(){
-        
+    public String playerPlace() {
+
         System.out.println("Ingresa el id");
         int id = Integer.parseInt(sc.nextLine());
 
@@ -101,12 +101,12 @@ public class Menu {
 
     /**
      * Add playerToDressroom <br>
-     * <b>pre:</b> Add player to a dressroom. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Add player to a dressroom. Main object must be initialized and
+     * all methos must be created<br>
      * <b>post:</b> Done or not done
      */
-    public String addPlayerToDressroom(){
-        
+    public String addPlayerToDressroom() {
+
         System.out.println("Ingresa el id");
         int id = Integer.parseInt(sc.nextLine());
 
@@ -116,12 +116,12 @@ public class Menu {
 
     /**
      * addCoachToDressroom <br>
-     * <b>pre:</b> Add coach to an office. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Add coach to an office. Main object must be initialized and all
+     * methos must be created<br>
      * <b>post:</b> Done or not done
      */
-    public String addCoachToOffice(){
-        
+    public String addCoachToOffice() {
+
         System.out.println("Ingresa el id");
         int id = Integer.parseInt(sc.nextLine());
 
@@ -131,12 +131,12 @@ public class Menu {
 
     /**
      * coachOffice <br>
-     * <b>pre:</b> Find the coach office ubication. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Find the coach office ubication. Main object must be initialized
+     * and all methos must be created<br>
      * <b>post:</b> Image and coordenates
      */
-    public String coachOffice(){
-        
+    public String coachOffice() {
+
         System.out.println("Ingresa el id");
         int id = Integer.parseInt(sc.nextLine());
 
@@ -146,12 +146,12 @@ public class Menu {
 
     /**
      * showLineUpsTeam <br>
-     * <b>pre:</b> Return the lineUp required. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Return the lineUp required. Main object must be initialized and
+     * all methos must be created<br>
      * <b>post:</b> Image and String
      */
-    public String showLineUpsTeam(){
-        
+    public String showLineUpsTeam() {
+
         System.out.println("Selecciona el club club (A - B) ");
         String letter = (sc.nextLine());
 
@@ -181,18 +181,55 @@ public class Menu {
 
     /**
      * addLineUp <br>
-     * <b>pre:</b> Add lineup to team required. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Add lineup to team required. Main object must be initialized and
+     * all methos must be created<br>
      * <b>post:</b> Done or not done
      */
-    public String addLineUp(){
+    public String addLineUp() {
         String message = "";
 
         System.out.println("Selecciona el club club (A - B) ");
         String letter = (sc.nextLine());
 
-        System.out.println("Ingresa la formación (4-4-3) ");
-        String lineUpNum = (sc.nextLine());
+        System.out.println("Ingresa la formación (4-4-2) ");
+        
+
+        String lineUpNum = "";
+        int sum = 0;
+
+        do {
+            System.out.println("Debe sumar 10 ");
+            System.out.println("");
+
+            String values = (sc.nextLine());
+
+            int[] nums = new int[10];
+
+            sum = 0;
+
+            String[] parts = values.split("-");
+
+            for (int i = 0; i < parts.length; i++) {
+                nums[i] = Integer.valueOf(parts[i]);
+            }
+
+            for(int i = 0; i < nums[i] ; i++){
+                System.out.println(nums[i]);
+            }
+
+            for (int i = 0; i < nums.length; i++) {
+                sum = sum + nums[i];
+            }
+
+            System.out.println("esta es la suma: " + sum);
+
+            if (sum == 10) {
+                lineUpNum = values;
+            }
+
+            System.out.println(lineUpNum);
+
+        } while (sum != 10);
 
         System.out.println("Ingresa la fecha (dd/mm/aaaa)  ");
         String lineUpDate = (sc.nextLine());
@@ -214,18 +251,18 @@ public class Menu {
         } while (typeNum > 4 || typeNum < 1);
 
         typeNum = typeNum - 1;
-        
 
         message = soccerClub.addLineUpToTeam(letter, lineUpDate, lineUpNum, typeNum);
         System.out.println("");
+
 
         return message;
     }
 
     /**
      * editEmployee <br>
-     * <b>pre:</b> Edidt the information of requested employee. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Edidt the information of requested employee. Main object must be
+     * initialized and all methos must be created<br>
      * <b>post:</b> Done or not done
      */
     public String editEmployee() {
@@ -341,16 +378,16 @@ public class Menu {
 
                     do {
                         System.out.println("");
-        
+
                         System.out.println("(1) Ofensiva ");
                         System.out.println("(2) Defensiva ");
                         System.out.println("(3) Pocesión ");
                         System.out.println("(4) Laboratorio ");
-        
+
                         numb = Integer.parseInt(sc.nextLine());
-        
+
                     } while (numb > 4 || numb < 1);
-        
+
                     numb = numb - 1;
 
                     message = soccerClub.setAssistanExpertise(id, numb);
@@ -405,7 +442,7 @@ public class Menu {
                     numb = Integer.parseInt(sc.nextLine());
                     message = soccerClub.setPalyerScoreGoals(id, numb);
                     break;
-                
+
                 case 6:
                     double mark = Double.parseDouble(sc.nextLine());
                     message = soccerClub.setPlayerAverageMark(id, mark);
@@ -415,16 +452,16 @@ public class Menu {
 
                     do {
                         System.out.println("");
-        
+
                         System.out.println("(1) Arquero ");
                         System.out.println("(2) Defensa ");
                         System.out.println("(3) Medio campista ");
                         System.out.println("(4) Delantero ");
-        
+
                         numb = Integer.parseInt(sc.nextLine());
-        
+
                     } while (numb > 4 || numb < 1);
-        
+
                     numb = numb - 1;
 
                     message = soccerClub.setPlayerRole(id, numb);
@@ -446,8 +483,8 @@ public class Menu {
 
     /**
      * takeOutEmployeeFromTeam <br>
-     * <b>pre:</b> Deleated the selected employee from team. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> Deleated the selected employee from team. Main object must be
+     * initialized and all methos must be created<br>
      * <b>post:</b> Done or not done
      */
     public String takeOutEmployeeFromTeam() {
@@ -468,8 +505,8 @@ public class Menu {
 
     /**
      * assingEmployeeToTeam <br>
-     * <b>pre:</b> add the selected employee to a team. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> add the selected employee to a team. Main object must be
+     * initialized and all methos must be created<br>
      * <b>post:</b> Done or not done
      */
     public String assingEmployeeToTeam() {
@@ -537,8 +574,8 @@ public class Menu {
 
     /**
      * addEmployee <br>
-     * <b>pre:</b> add a new employee to the club. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> add a new employee to the club. Main object must be initialized
+     * and all methos must be created<br>
      * <b>post:</b> Done or not done
      */
     public String addEmployee() {
@@ -673,8 +710,8 @@ public class Menu {
 
     /**
      * fireEmployee <br>
-     * <b>pre:</b> eliminate an employee from the club. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> eliminate an employee from the club. Main object must be
+     * initialized and all methos must be created<br>
      * <b>post:</b> Done or not done
      */
     public String fireEmployee() {
@@ -691,8 +728,8 @@ public class Menu {
 
     /**
      * showPlayerTeamInfo <br>
-     * <b>pre:</b> show an employee information. Main object
-     * must be initialized and all methos must be created<br>
+     * <b>pre:</b> show an employee information. Main object must be initialized and
+     * all methos must be created<br>
      * <b>post:</b> information
      */
     public String showPlayerTeamInfo() {
